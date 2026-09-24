@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/ORCID-0009-0009-8515-2727-brightgreen.svg" alt="ORCID" />
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License" />
   <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue.svg" alt="Python" />
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-green.svg" alt="Status" />
+  
 </p>
 
 > **AI Workflow & Automation Engineer** — Sarajevo, Bosnia and Herzegovina  
