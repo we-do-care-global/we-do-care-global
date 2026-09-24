@@ -1,11 +1,11 @@
 # We Do Care Global
 
-<p align="center">
-  <img src="https://img.shields.io/badge/ORCID-0009-0009-8515-2727-brightgreen.svg" alt="ORCID" />
-  <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License" />
-  <img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue.svg" alt="Python" />
+
+  [![ORCID](https://img.shields.io/badge/ORCID-0009--0009--8515--2727-brightgreen.svg)](https://orcid.org/0009-0009-8515-2727)
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+  [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue.svg)](https://python.org)
   
-</p>
+
 
 > **AI Workflow & Automation Engineer** — Sarajevo, Bosnia and Herzegovina  
 > Building open-source, citable, continuously-archived autonomous AI infrastructure.
