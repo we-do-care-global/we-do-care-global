@@ -74,7 +74,7 @@ Every repository ships with:
 
 ## Contact
 
-- **Email:** [emirperla46@gmail.com](mailto:emirperla46@gmail.com)
+- **Email:** [emirperla96@gmail.com](mailto:emirperla96@gmail.com)
 - **GitHub:** [github.com/emirperla96-lab](https://github.com/emirperla96-lab) / [we-do-care-global](https://github.com/we-do-care-global)
 - **ORCID:** [0009-0009-8515-2727](https://orcid.org/0009-0009-8515-2727)
 - **Location:** Sarajevo, Bosnia and Herzegovina
