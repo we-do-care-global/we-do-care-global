@@ -8,8 +8,8 @@
 
 
 > **AI Workflow & Automation Engineer** — Sarajevo, Bosnia and Herzegovina  
-> Building open-source, citable, continuously-archived autonomous AI infrastructure.
-
+> One brand. Four complementary control layers.
+> The product surface stays focused on pharmacovigilance while the wider We Do Care ecosystem provides retrieval, evaluation and agent-governance foundations.
 ---
 
 ## About
