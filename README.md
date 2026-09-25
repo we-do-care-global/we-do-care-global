@@ -53,6 +53,14 @@ Every repository ships with:
 
 ---
 
+### 4. Pharma Intelligence OS — Premium Pharmaceutical Intelligence Platform
+- **What it does:** Real-time FDA drug approvals tracking, AI-powered pharmaceutical intelligence, regulatory compliance monitoring, and premium analytics dashboard with openFDA API integration.
+- **Live demo:** [https://we-do-care-global.github.io/pharma-intelligence-os/](https://we-do-care-global.github.io/pharma-intelligence-os/)
+- **Repo:** [`we-do-care-global/pharma-intelligence-os`](https://github.com/we-do-care-global/pharma-intelligence-os)
+- **Release:** `v2.1.0` · Zenodo deposit triggered · ORCID embedded
+- **Landing:** [https://we-do-care-global.github.io/pharma-intelligence-os/](https://we-do-care-global.github.io/pharma-intelligence-os/)
+- **Stack:** TypeScript · React · Vite · TailwindCSS · Lucide Icons · OpenFDA API · GitHub Pages
+
 ## Skills & Capabilities
 
 - **Agent Governance:** YAML policy engines, tool-call proxies, audit logging (AgentGuard architecture).
