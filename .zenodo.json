@@ -1,0 +1,83 @@
+{
+  "title": "We Do Care Global — Published Projects Portal",
+  "upload_type": "software",
+  "description": "Author portal for the We Do Care Global open-source portfolio by Emir Perla (Sarajevo, Bosnia and Herzegovina): the published-project dashboard plus the project surface it indexes. Every project listed here is archived on Zenodo with a DataCite DOI and attributed to ORCID 0009-0009-8515-2727. Covers agent governance and security control (AgentGuard, AgentVault), production retrieval-augmented generation (Enterprise Hybrid-RAG), agent evaluation and observability (Agent Eval), and pharmacovigilance and regulatory intelligence (Pharma Intelligence OS). All projects are Apache-2.0.",
+  "creators": [
+    {
+      "name": "Perla, Emir",
+      "affiliation": "We Do Care Global",
+      "orcid": "0009-0009-8515-2727"
+    }
+  ],
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "keywords": [
+    "agent governance",
+    "AI agents",
+    "retrieval-augmented generation",
+    "evaluation",
+    "pharmacovigilance",
+    "research data management",
+    "ORCID",
+    "Zenodo"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/we-do-care-global",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/agentguard",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/enterprise-hybrid-rag",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/agent-eval",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/agentvault",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/pharma-intelligence-os",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.22945778",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22945802",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22945804",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22983557",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22983388",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    }
+  ],
+  "version": "0.1.0",
+  "publication_date": "2026-09-26"
+}
