@@ -81,15 +81,12 @@ jobs:
             API="https://zenodo.org/api"
           fi
 
-          # 1. Create the deposition from .zenodo.json. Zenodo rejects unknown
-          #    creator fields, so affiliation is stripped; the ORCID is kept
-          #    because it is what drives the DataCite -> ORCID record push.
+          # 1. Create the deposition from .zenodo.json. Creator affiliation is
+          #    kept (Zenodo accepts it); the ORCID drives the DataCite push.
           python - <<'PY' > metadata.json
           import json
           with open('.zenodo.json', encoding='utf-8') as fh:
               md = json.load(fh)
-          for creator in md.get('creators', []):
-              creator.pop('affiliation', None)
           json.dump({'metadata': md}, open('/dev/stdout', 'w'), ensure_ascii=False)
           PY
 
