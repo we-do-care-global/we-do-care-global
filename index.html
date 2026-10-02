@@ -1670,14 +1670,18 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         });
       });
 
-      document.getElementById('authGoogleBtn').addEventListener('click', () => {
-        const email = prompt("Enter Google account email to simulate OAuth:", "collaborator@gmail.com");
-        if (email) Auth.loginAsGuest(email, 'Google');
+      document.getElementById('authGoogleBtn').addEventListener('click', (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const inputVal = document.getElementById('loginEmail').value.trim();
+        const email = inputVal || 'collaborator.google@gmail.com';
+        Auth.loginAsGuest(email, 'Google OAuth');
       });
 
-      document.getElementById('authGithubBtn').addEventListener('click', () => {
-        const username = prompt("Enter GitHub username or email:", "we-do-care-engineer");
-        if (username) Auth.loginAsGuest(`${username}@github.com`, 'GitHub');
+      document.getElementById('authGithubBtn').addEventListener('click', (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const inputVal = document.getElementById('loginEmail').value.trim();
+        const email = inputVal || 'developer@github.com';
+        Auth.loginAsGuest(email, 'GitHub OAuth');
       });
 
       document.getElementById('loginForm').addEventListener('submit', (e) => {
@@ -1688,6 +1692,13 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
 
       document.getElementById('logoutBtn').addEventListener('click', () => Auth.logout());
       document.getElementById('sidebarBrand').addEventListener('click', () => this.showLanding());
+
+      const userBtn = document.getElementById('userBtn');
+      if (userBtn) {
+        userBtn.addEventListener('click', () => {
+          window.location.hash = '#/access';
+        });
+      }
 
       document.getElementById('collapseBtn').addEventListener('click', () => {
         const appEl = document.getElementById('app');
