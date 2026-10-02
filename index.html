@@ -499,17 +499,42 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
   display: flex; justify-content: space-between; align-items: center; font-size: .76rem; color: var(--text-4); flex-wrap: wrap; gap: 12px;
 }
 
+/* Strict Universal Enforcement for [hidden] */
+[hidden], [hidden="true"] {
+  display: none !important;
+}
+
 /* ==========================================================================
    7. RADIX DIALOG / LOGIN MODAL
    ========================================================================== */
 .login {
   position: fixed; inset: 0; z-index: 1000;
-  display: grid; place-items: center; padding: 20px;
+  display: none; place-items: center; padding: 20px;
   background: var(--scrim);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  opacity: 0; transition: opacity var(--dur-normal) var(--ease-smooth);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur-normal) var(--ease-smooth), visibility var(--dur-normal);
 }
-.login[data-open="true"] { opacity: 1; }
+.login[data-open="true"] {
+  display: grid !important;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.login[hidden] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.app[hidden] {
+  display: none !important;
+}
+.landing[hidden] {
+  display: none !important;
+}
 .login-card {
   position: relative; width: 100%; max-width: 440px;
   background: var(--bg-1); border: 1px solid var(--line-gold);
@@ -756,10 +781,10 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         <a href="#ld-pipeline">Board View</a>
       </nav>
       <div class="lnav__actions">
-        <button class="btn btn--sm btn--ghost" id="ldThemeBtn" type="button" aria-label="Toggle theme">
+        <button class="btn btn--sm btn--ghost" id="ldThemeBtn" type="button" aria-label="Toggle theme" onclick="App.toggleTheme()">
           <span id="ldThemeIcon" aria-hidden="true">☾</span>
         </button>
-        <button class="btn btn--sm" id="ldEnterBtn" type="button">Enter Console →</button>
+        <button class="btn btn--sm" id="ldEnterBtn" type="button" onclick="App.openLoginModal(event)">Enter Console →</button>
       </div>
     </div>
   </header>
@@ -777,8 +802,8 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         <b>8 Zenodo DOI archives</b>, <b>33% corporate revenue dedicated to global philanthropy</b>.
       </p>
       <div class="lhero__actions">
-        <button class="btn btn--lg" id="ldCta1" type="button">Sign In / Access Console</button>
-        <button class="btn btn--lg btn--ghost" id="ldCta2" type="button">Founder 1-Click Access →</button>
+        <button class="btn btn--lg" id="ldCta1" type="button" onclick="App.openLoginModal(event)">Sign In / Access Console</button>
+        <button class="btn btn--lg btn--ghost" id="ldCta2" type="button" onclick="Auth.loginAsAdmin()">Founder 1-Click Access →</button>
       </div>
       <div class="lhero__stats">
         <div class="lhero__stat"><b>6</b><span>Published platforms</span></div>
@@ -905,8 +930,8 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         Admin privileges reserved for Emir Perla (<code>emirperla96@gmail.com</code>).
       </p>
       <div class="lcta__actions">
-        <button class="btn btn--lg" id="ldCta3" type="button">Sign In / Register</button>
-        <button class="btn btn--lg btn--ghost" id="ldCta4" type="button">Founder Fast-Track →</button>
+        <button class="btn btn--lg" id="ldCta3" type="button" onclick="App.openLoginModal(event)">Sign In / Register</button>
+        <button class="btn btn--lg btn--ghost" id="ldCta4" type="button" onclick="Auth.loginAsAdmin()">Founder Fast-Track →</button>
       </div>
     </div>
   </section>
@@ -943,7 +968,7 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
           <h4>Security &amp; Contact</h4>
           <a href="mailto:emirperla96@gmail.com">Security Officer</a>
           <a href="https://github.com/we-do-care-global" target="_blank" rel="noopener">GitHub Organization</a>
-          <a href="#" id="ldFooterEnter">Open Console</a>
+          <a href="#" id="ldFooterEnter" onclick="App.openLoginModal(event); return false;">Open Console</a>
         </div>
       </div>
       <div class="lfooter__bottom">
@@ -957,7 +982,7 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
 <!-- ==================== RADIX DIALOG / LOGIN MODAL ==================== -->
 <div class="login" id="login" data-open="false" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="login-card">
-    <button class="login-card__close" id="loginClose" type="button" aria-label="Close modal">✕</button>
+    <button class="login-card__close" id="loginClose" type="button" aria-label="Close modal" onclick="App.closeLoginModal(event)">✕</button>
     <div class="login-card__seal" id="modalBrandSeal"></div>
     <h1 id="modalTitle">We Do <em>Care</em> Global</h1>
     <p class="login-card__lede">
@@ -970,17 +995,17 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         <strong>Founder &amp; Lead Architect</strong>
         <div style="color:var(--text-3);font-size:.72rem">Emir Perla (Admin Full Access)</div>
       </div>
-      <button class="btn btn--sm" type="button" id="adminFastLogin">Admin Login →</button>
+      <button class="btn btn--sm" type="button" id="adminFastLogin" onclick="Auth.loginAsAdmin()">Admin Login →</button>
     </div>
 
     <!-- OAuth Stack -->
     <div class="oauth-stack">
-      <button class="oauth-btn btn--auth-google" type="button" id="authGoogleBtn">
+      <button class="oauth-btn btn--auth-google" type="button" id="authGoogleBtn" onclick="App.handleGoogleAuth(event)">
         <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
         Continue with Google
       </button>
 
-      <button class="oauth-btn btn--auth-github" type="button" id="authGithubBtn">
+      <button class="oauth-btn btn--auth-github" type="button" id="authGithubBtn" onclick="App.handleGithubAuth(event)">
         <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         Continue with GitHub
       </button>
@@ -1036,14 +1061,14 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
           <div class="search__panel" id="searchPanel"></div>
         </div>
         <span class="clock" id="clock"><b>--:--</b>:--</span>
-        <button class="btn btn--sm btn--ghost" id="themeBtn" type="button" aria-label="Toggle theme">
+        <button class="btn btn--sm btn--ghost" id="themeBtn" type="button" aria-label="Toggle theme" onclick="App.toggleTheme()">
           <span id="themeIcon" aria-hidden="true">☾</span>
         </button>
-        <button class="user-btn" id="userBtn" type="button">
+        <button class="user-btn" id="userBtn" type="button" onclick="window.location.hash='#/access'">
           <span class="avatar" id="userAvatar">EP</span>
           <span class="user-btn__name" id="userName">Emir Perla (Admin)</span>
         </button>
-        <button class="btn btn--sm btn--ghost" id="logoutBtn" type="button">Sign Out</button>
+        <button class="btn btn--sm btn--ghost" id="logoutBtn" type="button" onclick="Auth.logout()">Sign Out</button>
       </div>
     </header>
 
@@ -1519,6 +1544,63 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
       setInterval(this.updateClock, 1000);
     },
 
+    openLoginModal(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (Auth.getCurrentUser()) {
+        App.showDashboard();
+        return;
+      }
+      const modal = document.getElementById('login');
+      if (modal) {
+        modal.hidden = false;
+        modal.removeAttribute('hidden');
+        modal.style.display = 'grid';
+        requestAnimationFrame(() => modal.setAttribute('data-open', 'true'));
+      }
+    },
+
+    closeLoginModal(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const modal = document.getElementById('login');
+      if (modal) {
+        modal.setAttribute('data-open', 'false');
+        setTimeout(() => {
+          modal.hidden = true;
+          modal.setAttribute('hidden', '');
+          modal.style.display = 'none';
+        }, 260);
+      }
+    },
+
+    toggleTheme() {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('wdc_theme', next); } catch(e){}
+      const symbol = next === 'dark' ? '☾' : '☼';
+      const icon = document.getElementById('themeIcon');
+      const ldIcon = document.getElementById('ldThemeIcon');
+      if (icon) icon.textContent = symbol;
+      if (ldIcon) ldIcon.textContent = symbol;
+      Toast.show(`Theme switched to ${next} mode`, 'info', 1800);
+    },
+
+    handleGoogleAuth(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const inputVal = (document.getElementById('loginEmail')?.value || '').trim();
+      const email = inputVal || 'collaborator.google@gmail.com';
+      this.closeLoginModal(e);
+      Auth.loginAsGuest(email, 'Google OAuth');
+    },
+
+    handleGithubAuth(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const inputVal = (document.getElementById('loginEmail')?.value || '').trim();
+      const email = inputVal || 'developer@github.com';
+      this.closeLoginModal(e);
+      Auth.loginAsGuest(email, 'GitHub OAuth');
+    },
+
     injectBrandSeals() {
       // Injects the unified SVG brand mark into all header/footer slots with unique ID prefixes
       const navMark = document.getElementById('navBrandMark');
@@ -1560,16 +1642,8 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         if (ldIcon) ldIcon.textContent = symbol;
       };
 
-      const toggle = () => {
-        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = cur === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('wdc_theme', next);
-        updateIcons(next);
-        Toast.show(`Theme switched to ${next} mode`, 'info', 1800);
-      };
-      if (btn) btn.addEventListener('click', toggle);
-      if (ldBtn) ldBtn.addEventListener('click', toggle);
+      if (btn) btn.addEventListener('click', () => this.toggleTheme());
+      if (ldBtn) ldBtn.addEventListener('click', () => this.toggleTheme());
 
       const saved = localStorage.getItem('wdc_theme') || 'dark';
       document.documentElement.setAttribute('data-theme', saved);
@@ -1632,66 +1706,58 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
 
     bindLogin() {
       const modal = document.getElementById('login');
-      const openModal = (e) => {
-        if (e && e.preventDefault) e.preventDefault();
-        modal.hidden = false;
-        requestAnimationFrame(() => modal.setAttribute('data-open', 'true'));
-      };
-      const closeModal = (e) => {
-        if (e && e.preventDefault) e.preventDefault();
-        modal.setAttribute('data-open', 'false');
-        setTimeout(() => modal.hidden = true, 260);
-      };
 
       const handleEnterOrOpen = (e) => {
         if (e && e.preventDefault) e.preventDefault();
         if (Auth.getCurrentUser()) {
           App.showDashboard();
         } else {
-          openModal(e);
+          App.openLoginModal(e);
         }
       };
 
       document.querySelectorAll('#ldEnterBtn, #ldCta1, #ldCta3, #ldFooterEnter').forEach(b => {
         b.addEventListener('click', handleEnterOrOpen);
       });
-      document.getElementById('loginClose').addEventListener('click', closeModal);
+      const closeBtn = document.getElementById('loginClose');
+      if (closeBtn) closeBtn.addEventListener('click', (e) => this.closeLoginModal(e));
 
       // ESC key closes dialog
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.hidden) closeModal();
+        if (e.key === 'Escape' && modal && !modal.hidden) this.closeLoginModal(e);
       });
 
       document.querySelectorAll('#adminFastLogin, #ldCta2, #ldCta4').forEach(b => {
         b.addEventListener('click', (e) => {
           if (e && e.preventDefault) e.preventDefault();
-          closeModal();
+          this.closeLoginModal(e);
           Auth.loginAsAdmin();
         });
       });
 
-      document.getElementById('authGoogleBtn').addEventListener('click', (e) => {
-        if (e && e.preventDefault) e.preventDefault();
-        const inputVal = document.getElementById('loginEmail').value.trim();
-        const email = inputVal || 'collaborator.google@gmail.com';
-        Auth.loginAsGuest(email, 'Google OAuth');
-      });
+      const googleBtn = document.getElementById('authGoogleBtn');
+      if (googleBtn) googleBtn.addEventListener('click', (e) => this.handleGoogleAuth(e));
 
-      document.getElementById('authGithubBtn').addEventListener('click', (e) => {
-        if (e && e.preventDefault) e.preventDefault();
-        const inputVal = document.getElementById('loginEmail').value.trim();
-        const email = inputVal || 'developer@github.com';
-        Auth.loginAsGuest(email, 'GitHub OAuth');
-      });
+      const githubBtn = document.getElementById('authGithubBtn');
+      if (githubBtn) githubBtn.addEventListener('click', (e) => this.handleGithubAuth(e));
 
-      document.getElementById('loginForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const val = document.getElementById('loginEmail').value;
-        if (val) Auth.loginAsGuest(val, 'Direct Email');
-      });
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const val = document.getElementById('loginEmail')?.value;
+          if (val) {
+            this.closeLoginModal(e);
+            Auth.loginAsGuest(val, 'Direct Email');
+          }
+        });
+      }
 
-      document.getElementById('logoutBtn').addEventListener('click', () => Auth.logout());
-      document.getElementById('sidebarBrand').addEventListener('click', () => this.showLanding());
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) logoutBtn.addEventListener('click', () => Auth.logout());
+
+      const brandBtn = document.getElementById('sidebarBrand');
+      if (brandBtn) brandBtn.addEventListener('click', () => this.showLanding());
 
       const userBtn = document.getElementById('userBtn');
       if (userBtn) {
@@ -1700,13 +1766,16 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
         });
       }
 
-      document.getElementById('collapseBtn').addEventListener('click', () => {
-        const appEl = document.getElementById('app');
-        const cur = appEl.getAttribute('data-sidebar');
-        const next = cur === 'collapsed' ? 'expanded' : 'collapsed';
-        appEl.setAttribute('data-sidebar', next);
-        document.getElementById('collapseIcon').textContent = next === 'collapsed' ? '⟩' : '⟨';
-      });
+      const collapseBtn = document.getElementById('collapseBtn');
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', () => {
+          const appEl = document.getElementById('app');
+          const cur = appEl.getAttribute('data-sidebar');
+          const next = cur === 'collapsed' ? 'expanded' : 'collapsed';
+          appEl.setAttribute('data-sidebar', next);
+          document.getElementById('collapseIcon').textContent = next === 'collapsed' ? '⟩' : '⟨';
+        });
+      }
     },
 
     paintLanding() {
@@ -1792,8 +1861,18 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
     showLanding() {
       document.body.classList.remove('app-mode');
       document.body.classList.add('landing-mode');
-      document.getElementById('landing').hidden = false;
-      document.getElementById('app').hidden = true;
+      const landing = document.getElementById('landing');
+      const app = document.getElementById('app');
+      if (landing) {
+        landing.hidden = false;
+        landing.removeAttribute('hidden');
+        landing.style.display = 'block';
+      }
+      if (app) {
+        app.hidden = true;
+        app.setAttribute('hidden', '');
+        app.style.display = 'none';
+      }
       window.scrollTo(0, 0);
     },
 
@@ -1803,12 +1882,24 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
       if (modal) {
         modal.setAttribute('data-open', 'false');
         modal.hidden = true;
+        modal.setAttribute('hidden', '');
+        modal.style.display = 'none';
       }
 
       document.body.classList.remove('landing-mode');
       document.body.classList.add('app-mode');
-      document.getElementById('landing').hidden = true;
-      document.getElementById('app').hidden = false;
+      const landing = document.getElementById('landing');
+      const app = document.getElementById('app');
+      if (landing) {
+        landing.hidden = true;
+        landing.setAttribute('hidden', '');
+        landing.style.display = 'none';
+      }
+      if (app) {
+        app.hidden = false;
+        app.removeAttribute('hidden');
+        app.style.display = 'grid';
+      }
 
       const user = Auth.getCurrentUser() || {
         email: ADMIN_EMAIL,
@@ -2433,7 +2524,11 @@ policy:
 
   window.App = App;
   window.Auth = Auth;
-  document.addEventListener('DOMContentLoaded', () => App.init());
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => App.init());
+  } else {
+    App.init();
+  }
 })();
 </script>
 </body>
