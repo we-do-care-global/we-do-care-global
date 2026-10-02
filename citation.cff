@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or reference the We Do Care Global ecosystem, please cite it as below."
+authors:
+  - family-names: "Perla"
+    given-names: "Emir"
+    orcid: "https://orcid.org/0009-0009-8515-2727"
+    affiliation: "We Do Care Global"
+title: "We Do Care Global — Published Projects Portal & Autonomous AI Governance OS"
+version: 1.0.0
+doi: 10.5281/zenodo.22983603
+date-released: 2026-10-01
+url: "https://we-do-care-global.github.io/we-do-care-global/"
+repository-code: "https://github.com/we-do-care-global/we-do-care-global"
+license: Apache-2.0
+keywords:
+  - "autonomous AI governance"
+  - "AI agents"
+  - "policy engine"
+  - "audit log"
+  - "hybrid RAG"
+  - "NVIDIA NeMo"
+  - "agent evaluation"
+  - "pharmacovigilance"
+  - "FoundationCentar"
+  - "AgentGuard"
+  - "AgentVault"
+  - "Sarajevo"

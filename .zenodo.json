@@ -1,22 +1,32 @@
 {
-  "title": "We Do Care Global — Published Projects Portal",
+  "title": "We Do Care Global — Published Projects Portal & Autonomous AI Governance OS",
   "upload_type": "software",
-  "description": "Author portal for the We Do Care Global open-source portfolio by Emir Perla (Sarajevo, Bosnia and Herzegovina): the published-project dashboard plus the project surface it indexes. Every project listed here is archived on Zenodo with a DataCite DOI and attributed to ORCID 0009-0009-8515-2727. Covers agent governance and security control (AgentGuard, AgentVault), production retrieval-augmented generation (Enterprise Hybrid-RAG), agent evaluation and observability (Agent Eval), and pharmacovigilance and regulatory intelligence (Pharma Intelligence OS). All projects are Apache-2.0.",
+  "description": "Author portal and open-source portfolio for We Do Care Global, founded by Emir Perla in Sarajevo, Bosnia and Herzegovina. The organization operates on a fundamental pledge of dedicating 33% of its annual revenue to provide financial and material assistance to vulnerable individuals worldwide for a dignified life. In technology, We Do Care Global delivers autonomous AI governance from first principles across 6 core systems: multi-agent factory orchestration (FoundationCentar), agent security and policy control planes (AgentGuard), enterprise function calling and secrets governance (AgentVault), production retrieval-augmented generation (Enterprise Hybrid-RAG with NVIDIA NeMo), agent observability and benchmarking (Agent Eval), and pharmacovigilance intelligence (Pharma Intelligence OS). Every release is archived on Zenodo with permanent DataCite DOIs under Apache-2.0 and attributed to ORCID 0009-0009-8515-2727.",
   "creators": [
     {
       "name": "Perla, Emir",
       "affiliation": "We Do Care Global",
       "orcid": "0009-0009-8515-2727"
+    },
+    {
+      "name": "We Do Care Global",
+      "affiliation": "Sarajevo, Bosnia and Herzegovina"
     }
   ],
   "access_right": "open",
   "license": "Apache-2.0",
   "keywords": [
-    "agent governance",
+    "autonomous AI governance",
     "AI agents",
-    "retrieval-augmented generation",
-    "evaluation",
+    "agent orchestration",
+    "FoundationCentar",
+    "AgentGuard",
+    "AgentVault",
+    "Enterprise Hybrid-RAG",
+    "NVIDIA NeMo",
+    "Agent Eval",
     "pharmacovigilance",
+    "Pharma Intelligence OS",
     "research data management",
     "ORCID",
     "Zenodo"
@@ -24,6 +34,11 @@
   "related_identifiers": [
     {
       "identifier": "https://github.com/we-do-care-global",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/we-do-care-global/FoundationCentar",
       "relation": "isSupplementTo",
       "scheme": "url"
     },
@@ -53,8 +68,23 @@
       "scheme": "url"
     },
     {
+      "identifier": "10.5281/zenodo.23073888",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23073887",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
       "identifier": "10.5281/zenodo.22945778",
       "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22945777",
+      "relation": "isVersionOf",
       "scheme": "doi"
     },
     {
@@ -63,8 +93,18 @@
       "scheme": "doi"
     },
     {
+      "identifier": "10.5281/zenodo.22945801",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
       "identifier": "10.5281/zenodo.22945804",
       "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22945803",
+      "relation": "isVersionOf",
       "scheme": "doi"
     },
     {
@@ -73,11 +113,31 @@
       "scheme": "doi"
     },
     {
+      "identifier": "10.5281/zenodo.22983556",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
       "identifier": "10.5281/zenodo.22983388",
       "relation": "isDocumentedBy",
       "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22983387",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22983603",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22983602",
+      "relation": "isVersionOf",
+      "scheme": "doi"
     }
   ],
-  "version": "0.1.0",
-  "publication_date": "2026-09-26"
+  "version": "1.0.0",
+  "publication_date": "2026-10-01"
 }
