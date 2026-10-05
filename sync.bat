@@ -1,5 +1,11 @@
 @echo off
 cd /d "C:\Users\DT User\we-do-care-global"
+echo [0/3] Syncing the GitHub Pages source...
+copy /Y index.html docs\index.html >nul
+if errorlevel 1 (
+  echo [ERROR] Failed to sync index.html to docs\index.html.
+  exit /b 1
+)
 echo [1/3] Adding files to git...
 git add README.md docs/index.html index.html .zenodo.json citation.cff
 git status
