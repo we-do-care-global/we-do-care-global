@@ -106,7 +106,7 @@
 }
 
 /* ==========================================================================
-   2. BASE & BULLETPROOF SCROLLING
+   2. RICH TEXTURED VELVET BACKGROUND & SMOOTH SCROLLING
    ========================================================================== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
@@ -125,15 +125,32 @@ body {
   overflow-y: visible !important;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+[data-theme="dark"] body {
+  background: radial-gradient(circle at 50% 0%, #0d101a 0%, #07080c 55%, #030406 100%);
+  background-attachment: fixed;
+}
+[data-theme="light"] body {
+  background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f7f6f2 65%, #ece8df 100%);
+  background-attachment: fixed;
 }
 
-/* Ambient Radial Lighting */
+/* Ambient Radial Velvet Light */
 body::before {
   content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background:
-    radial-gradient(1000px 500px at 15% 0%, rgba(217, 169, 95, 0.07), transparent 60%),
-    radial-gradient(850px 500px at 85% 100%, rgba(0, 180, 216, 0.05), transparent 60%),
-    radial-gradient(900px 600px at 50% 50%, rgba(157, 78, 221, 0.03), transparent 70%);
+    radial-gradient(1100px 650px at 15% 0%, rgba(217, 169, 95, 0.09) 0%, transparent 60%),
+    radial-gradient(900px 550px at 85% 100%, rgba(0, 180, 216, 0.07) 0%, transparent 60%),
+    radial-gradient(1000px 600px at 50% 45%, rgba(157, 78, 221, 0.04) 0%, transparent 70%),
+    radial-gradient(700px 400px at 90% 12%, rgba(217, 169, 95, 0.06) 0%, transparent 50%);
+}
+
+/* Subtle Velvet Micro-Noise Texture */
+body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 
 button, input, select, textarea { font: inherit; color: inherit; }

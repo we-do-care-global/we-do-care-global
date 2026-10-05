@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   1. DESIGN TOKENS & SYSTEM VARIABLES
+   1. DESIGN TOKENS & LUXURY SOVEREIGN PALETTE
    ========================================================================== */
 :root {
   --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -106,7 +106,7 @@
 }
 
 /* ==========================================================================
-   2. BASE & BULLETPROOF SCROLLING
+   2. RICH TEXTURED BACKGROUND & FREE SCROLLING
    ========================================================================== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
@@ -125,15 +125,32 @@ body {
   overflow-y: visible !important;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+[data-theme="dark"] body {
+  background: radial-gradient(circle at 50% 0%, #0d101a 0%, #07080c 55%, #030406 100%);
+  background-attachment: fixed;
+}
+[data-theme="light"] body {
+  background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f7f6f2 65%, #ece8df 100%);
+  background-attachment: fixed;
 }
 
-/* Ambient Radial Lighting */
+/* Ambient Radial Velvet Light */
 body::before {
   content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background:
-    radial-gradient(1000px 500px at 15% 0%, rgba(217, 169, 95, 0.07), transparent 60%),
-    radial-gradient(850px 500px at 85% 100%, rgba(0, 180, 216, 0.05), transparent 60%),
-    radial-gradient(900px 600px at 50% 50%, rgba(157, 78, 221, 0.03), transparent 70%);
+    radial-gradient(1100px 650px at 15% 0%, rgba(217, 169, 95, 0.09) 0%, transparent 60%),
+    radial-gradient(900px 550px at 85% 100%, rgba(0, 180, 216, 0.07) 0%, transparent 60%),
+    radial-gradient(1000px 600px at 50% 45%, rgba(157, 78, 221, 0.04) 0%, transparent 70%),
+    radial-gradient(700px 400px at 90% 12%, rgba(217, 169, 95, 0.06) 0%, transparent 50%);
+}
+
+/* Subtle Velvet Micro-Noise Texture */
+body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -717,7 +734,7 @@ img { display: block; max-width: 100%; }
 <nav class="nav">
   <div class="nav__brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
     <div class="brand-seal-wrapper">
-      <img src="assets/logo.jpg" onerror="this.onerror=null; this.src='public/logo.jpg'; if(!this.complete) this.src='https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg';" alt="We Do Care Global" class="brand-seal-img">
+      <img src="https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg" onerror="if(this.src!=='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg'){this.src='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg';}else{this.src='assets/logo.jpg';}" alt="We Do Care Global" class="brand-seal-img">
     </div>
     <div>
       <div class="nav__title">We Do Care Global</div>
@@ -835,7 +852,7 @@ img { display: block; max-width: 100%; }
   <div class="hero__medallion-stage">
     <div class="medallion-halo"></div>
     <div class="medallion-master-frame">
-      <img src="assets/logo.jpg" onerror="this.onerror=null; this.src='public/logo.jpg'; if(!this.complete) this.src='https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg';" alt="We Do Care Global Master Seal" class="medallion-master-img">
+      <img src="https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg" onerror="if(this.src!=='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg'){this.src='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg';}else{this.src='assets/logo.jpg';}" alt="We Do Care Global Master Seal" class="medallion-master-img">
     </div>
     <div class="medallion-caption">
       Solidarity · Compassion · Action
@@ -1170,17 +1187,13 @@ img { display: block; max-width: 100%; }
   </div>
 </footer>
 
-<!-- ==========================================================================
-   MODALS
-   ========================================================================== -->
-
 <!-- AUTHENTICATION MODAL -->
 <div class="modal-overlay" id="authModal">
   <div class="modal-box">
     <button class="modal-close" type="button" onclick="App.closeAuthModal()">✕</button>
     <div style="text-align:center; margin-bottom:20px;">
       <div class="brand-seal-wrapper" style="margin:0 auto 12px; width:56px; height:56px;">
-        <img src="assets/logo.jpg" onerror="this.onerror=null; this.src='public/logo.jpg'; if(!this.complete) this.src='https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg';" alt="We Do Care Global" class="brand-seal-img">
+        <img src="https://raw.githubusercontent.com/we-do-care-global/we-do-care-global/main/public/logo.jpg" onerror="if(this.src!=='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg'){this.src='https://we-do-care-global.github.io/we-do-care-global/assets/logo.jpg';}else{this.src='assets/logo.jpg';}" alt="We Do Care Global" class="brand-seal-img">
       </div>
       <h3 style="font-family:var(--font-display); font-size:1.85rem; font-weight:400;">Sign in to We Do Care Global</h3>
       <p style="font-size:0.84rem; color:var(--text-3); margin-top:4px;">
