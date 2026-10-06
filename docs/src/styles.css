@@ -724,8 +724,8 @@ section {
   .app-footer { display:block; }
   .app-footer a { display:block; margin-top:10px; }
   .wrap {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .nav {
     padding-left: 17px;
