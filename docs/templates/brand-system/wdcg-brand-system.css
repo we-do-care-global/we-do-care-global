@@ -79,10 +79,10 @@ body:before {
   transform: none;
 }
 .wrap {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .nav {
   position: sticky;
@@ -703,12 +703,12 @@ section {
   .app-footer { display:block; }
   .app-footer a { display:block; margin-top:10px; }
   .wrap {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .nav {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .brand small {
     display: none;
@@ -842,10 +842,10 @@ body:before {
   transform: none;
 }
 .wrap {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .nav {
   position: sticky;
@@ -1466,12 +1466,12 @@ section {
   .app-footer { display:block; }
   .app-footer a { display:block; margin-top:10px; }
   .wrap {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .nav {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .brand small {
     display: none;
