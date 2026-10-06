@@ -100,10 +100,10 @@ body:before {
   transform: none;
 }
 .wrap {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .nav {
   position: sticky;
