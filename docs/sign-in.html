@@ -65,13 +65,9 @@ document.getElementById('signin-form').addEventListener('submit', async (e) => {
   const password = e.target.password.value;
   btn.disabled = true;
   btn.textContent = 'Signing in...';
-  try {
-    const res = await fetch('/api/signin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
-    const data = await res.json();
-    if (res.ok) { localStorage.setItem('wdcg_session', data.token || 'signed-in'); window.location.href = data.redirect || '/#projects'; }
-    else { alert(data.error || 'Sign in failed.'); }
-  } catch (err) { alert('Network error. Please check your connection.'); }
-  finally { btn.disabled = false; btn.textContent = 'Sign In'; }
+  // Demo mode: no backend, store session in localStorage
+  localStorage.setItem('wdcg_session', JSON.stringify({ email, signedInAt: new Date().toISOString() }));
+  window.location.href = '/dashboard';
 });
 </script>
 </body>
