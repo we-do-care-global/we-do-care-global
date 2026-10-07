@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "rgcp": "Revenue Global Control Platform",
+  "snapshot": "2026-10-07",
+  "margin_floor": 280.0,
+  "payback_floor": 50.0,
+  "competitor_floor": 99.0,
+  "gross_margin_at_competitor": 57.58,
+  "gap_to_margin_floor": 181.0,
+  "pricing_benchmark": {
+    "AgentShield": "$24-$749/mo per agent fleet (self-serve)",
+    "consumption": "$0.50-$5/agent action",
+    "ai_red_teaming": "$8K-$150K+ per engagement",
+    "agentic_compliance": "$10K-$500K+/yr"
+  },
+  "recommendation": "Raise entry tier above the margin floor: floor $280/unit vs competitor $99. Convert to hybrid billing (base + usage). Cap annual discounts at +30% to stop leakage. Route inference per-request.",
+  "leakage_sample": []
+}

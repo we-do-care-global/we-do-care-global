@@ -1634,7 +1634,34 @@ img { display: block; max-width: 100%; }
     }
   };
 
-  window.App = App;
+  
+
+  // ---------- WDCG Pricing Engine (rgcp) ----------
+  (function(){
+    const api = 'https://we-do-care-global.github.io/we-do-care-global/docs/pricing.json';
+    const major = '1.0.0';
+    const el = document.getElementById('pricingEngine');
+    if (!el) return;
+    function render(d){
+      el.innerHTML = '';
+      const h = document.createElement('div');
+      h.className = 'pricingEngine';
+      h.innerHTML = '<h3>RGCP Pricing Engine — v' + major + '</h3>' +
+        '<div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">' +
+        '<div class="card"><strong>Margin floor</strong><br>${Number(d.margin_floor).toFixed(0)} USD/unit (target 85% margin)</div>' +
+        '<div class="card"><strong>CAC-payback floor</strong><br>${Number(d.payback_floor).toFixed(0)} USD/mo</div>' +
+        '<div class="card"><strong>Competitor floor</strong><br>${Number(d.competitor_floor).toFixed(0)} USD (margin gap ${Number(d.gap_to_margin_floor).toFixed(0)})</div>' +
+        '<div class="card"><strong>Entry tier guidance</strong><br>'manual/set-at-runtime'</div>' +
+        '</div>' +
+        '<div class="card"><strong>Leakage audit</strong> (auto-flagged)</div>';
+      el.appendChild(h);
+    }
+    fetch(api).then(r=>r.json()).then(render).catch(()=>{
+      el.innerHTML = '<p class="txt2">pricing engine: offline (set offline sample below)</p>';
+    });
+  })();
+
+    window.App = App;
   document.addEventListener('DOMContentLoaded', () => App.init());
 })();
 </script>
