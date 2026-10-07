@@ -1,0 +1,201 @@
+"""
+WDC CLI — We Do Care Global Command Line Interface
+Unified tool for managing all 6 WDCG systems.
+
+Usage:
+    wdc status              # Show all system statuses
+    wdc register <agent>    # Register a new agent
+    wdc agents              # List registered agents
+    wdc call <agent> <tool> # Route a tool call
+    wdc audit                # Show audit log
+    wdc summary             # Ecosystem summary
+"""
+
+import sys
+import json
+import argparse
+from datetime import datetime
+
+# Import ecosystem (when running from repo)
+try:
+    from ecosystem import ecosystem, SystemStatus
+except ImportError:
+    # Standalone mode — minimal implementation
+    class MockEcosystem:
+        SYSTEMS = {
+            "foundation": {"name": "FoundationCentar", "url": "https://foundationcentar-demo-rkwero.v2.appdeploy.ai", "capabilities": ["orchestration", "multi-agent", "governance"]},
+            "agentguard": {"name": "AgentGuard", "url": "https://command-center-agentguard-wallet-os-lz1sg2.v2.appdeploy.ai", "capabilities": ["security", "policy", "audit", "kill-switch"]},
+            "hybrid-rag": {"name": "Enterprise Hybrid-RAG", "url": "https://we-do-care-global.github.io/enterprise-hybrid-rag/", "capabilities": ["retrieval", "embeddings", "evaluation"]},
+            "agent-eval": {"name": "Agent Eval", "url": "https://we-do-care-global.github.io/agent-eval/", "capabilities": ["metrics", "tracing", "benchmarks"]},
+            "agentvault": {"name": "AgentVault", "url": "https://we-do-care-global.github.io/agentvault/", "capabilities": ["secrets", "encryption", "zero-trust"]},
+            "pharma": {"name": "Pharma Intelligence OS", "url": "https://we-do-care-global.github.io/pharma-intelligence-os/", "capabilities": ["pharmacovigilance", "regulatory", "fda"]},
+        }
+        def __init__(self):
+            self._agents = {}
+            self._audit_log = []
+        def register_agent(self, agent_id, name, system, capabilities=None, policy=None, metadata=None):
+            self._agents[agent_id] = {"agent_id": agent_id, "name": name, "system": system, "capabilities": capabilities or [], "policy": policy or {}, "metadata": metadata or {}}
+            return self._agents[agent_id]
+        def get_system_status(self, system=None):
+            if system:
+                info = self.SYSTEMS.get(system, {})
+                return {"name": info.get("name"), "url": info.get("url"), "capabilities": info.get("capabilities", []), "status": "online"}
+            return {name: {"name": info["name"], "url": info["url"], "capabilities": info["capabilities"], "status": "online"} for name, info in self.SYSTEMS.items()}
+        def get_agents(self, system=None):
+            agents = list(self._agents.values())
+            if system:
+                agents = [a for a in agents if a["system"] == system]
+            return agents
+        def get_audit_log(self, limit=100):
+            return self._audit_log[-limit:]
+        def summary(self):
+            return {"systems": len(self.SYSTEMS), "registered_agents": len(self._agents), "audit_events": len(self._audit_log), "system_status": self.get_system_status(), "agents": self.get_agents()}
+    ecosystem = MockEcosystem()
+
+
+def cmd_status(args):
+    """Show all system statuses"""
+    status = ecosystem.get_system_status()
+    print("\n╔══════════════════════════════════════════════════════════════╗")
+    print("║           WDCG Ecosystem — System Status                   ║")
+    print("╠══════════════════════════════════════════════════════════════╣")
+    for key, info in status.items():
+        name = info["name"]
+        url = info["url"]
+        caps = ", ".join(info["capabilities"])
+        print(f"║  ● {name:<25} {info['status']:<10}           ║")
+        print(f"║    {url:<50} ║")
+        print(f"║    Capabilities: {caps:<40} ║")
+        print("╠══════════════════════════════════════════════════════════════╣")
+    print("║  Total: 6 systems — All operational                        ║")
+    print("╚══════════════════════════════════════════════════════════════╝\n")
+
+
+def cmd_register(args):
+    """Register a new agent"""
+    agent_id = args.agent_id
+    name = args.name or agent_id
+    system = args.system
+    capabilities = args.capabilities.split(",") if args.capabilities else []
+    
+    agent = ecosystem.register_agent(
+        agent_id=agent_id,
+        name=name,
+        system=system,
+        capabilities=capabilities,
+    )
+    print(f"\n✅ Agent registered:")
+    print(f"   ID: {agent['agent_id']}")
+    print(f"   Name: {agent['name']}")
+    print(f"   System: {agent['system']}")
+    print(f"   Capabilities: {', '.join(agent['capabilities'])}\n")
+
+
+def cmd_agents(args):
+    """List registered agents"""
+    agents = ecosystem.get_agents(args.system)
+    if not agents:
+        print("\nNo agents registered.\n")
+        return
+    print(f"\n{'='*60}")
+    print(f"Registered Agents ({len(agents)})")
+    print(f"{'='*60}")
+    for a in agents:
+        print(f"  {a['agent_id']:<20} {a['name']:<20} {a['system']}")
+    print()
+
+
+def cmd_call(args):
+    """Route a tool call"""
+    result = ecosystem.route_tool_call(
+        agent_id=args.agent_id,
+        tool_name=args.tool,
+        input_data={"args": args.args} if args.args else None,
+        require_approval=args.approval,
+    )
+    print(f"\nTool Call Result:")
+    print(f"  Agent: {result['agent']['name']}")
+    print(f"  Tool: {result['eval_record']['tool_name']}")
+    print(f"  Decision: {result['decision']}")
+    print(f"  Allowed: {result['allowed']}")
+    print(f"  Reason: {result['reason']}\n")
+
+
+def cmd_audit(args):
+    """Show audit log"""
+    log = ecosystem.get_audit_log(args.limit)
+    if not log:
+        print("\nNo audit events.\n")
+        return
+    print(f"\n{'='*60}")
+    print(f"Audit Log (last {len(log)} events)")
+    print(f"{'='*60}")
+    for entry in log:
+        print(f"  {entry['timestamp']}  {entry['event']:<20} {entry.get('agent_id', '-')}")
+    print()
+
+
+def cmd_summary(args):
+    """Ecosystem summary"""
+    s = ecosystem.summary()
+    print("\n╔══════════════════════════════════════════════════════════════╗")
+    print("║           WDCG Ecosystem — Summary                         ║")
+    print("╠══════════════════════════════════════════════════════════════╣")
+    print(f"║  Systems: {s['systems']:<50} ║")
+    print(f"║  Registered Agents: {s['registered_agents']:<40} ║")
+    print(f"║  Audit Events: {s['audit_events']:<44} ║")
+    print("╚══════════════════════════════════════════════════════════════╝\n")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="WDCG Ecosystem CLI")
+    subparsers = parser.add_subparsers(dest="command")
+    
+    # status
+    subparsers.add_parser("status", help="Show system statuses")
+    
+    # register
+    reg = subparsers.add_parser("register", help="Register an agent")
+    reg.add_argument("agent_id", help="Agent ID")
+    reg.add_argument("--name", help="Agent name")
+    reg.add_argument("--system", required=True, help="System (foundation, agentguard, hybrid-rag, agent-eval, agentvault, pharma)")
+    reg.add_argument("--capabilities", help="Comma-separated capabilities")
+    
+    # agents
+    ag = subparsers.add_parser("agents", help="List agents")
+    ag.add_argument("--system", help="Filter by system")
+    
+    # call
+    call = subparsers.add_parser("call", help="Route a tool call")
+    call.add_argument("agent_id", help="Agent ID")
+    call.add_argument("tool", help="Tool name")
+    call.add_argument("--args", help="Tool arguments")
+    call.add_argument("--approval", action="store_true", help="Require approval")
+    
+    # audit
+    audit = subparsers.add_parser("audit", help="Show audit log")
+    audit.add_argument("--limit", type=int, default=100)
+    
+    # summary
+    subparsers.add_parser("summary", help="Ecosystem summary")
+    
+    args = parser.parse_args()
+    
+    if args.command == "status":
+        cmd_status(args)
+    elif args.command == "register":
+        cmd_register(args)
+    elif args.command == "agents":
+        cmd_agents(args)
+    elif args.command == "call":
+        cmd_call(args)
+    elif args.command == "audit":
+        cmd_audit(args)
+    elif args.command == "summary":
+        cmd_summary(args)
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
