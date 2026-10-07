@@ -73,6 +73,7 @@ def cmd_status(args):
 
 def cmd_register(args):
     """Register a new agent"""
+    from dataclasses import asdict
     agent_id = args.agent_id
     name = args.name or agent_id
     system = args.system
@@ -84,11 +85,12 @@ def cmd_register(args):
         system=system,
         capabilities=capabilities,
     )
+    agent_dict = asdict(agent)
     print(f"\n✅ Agent registered:")
-    print(f"   ID: {agent['agent_id']}")
-    print(f"   Name: {agent['name']}")
-    print(f"   System: {agent['system']}")
-    print(f"   Capabilities: {', '.join(agent['capabilities'])}\n")
+    print(f"   ID: {agent_dict['agent_id']}")
+    print(f"   Name: {agent_dict['name']}")
+    print(f"   System: {agent_dict['system']}")
+    print(f"   Capabilities: {', '.join(agent_dict['capabilities'])}\n")
 
 
 def cmd_agents(args):
@@ -122,63 +124,17 @@ def cmd_call(args):
 
 
 def cmd_audit(args):
-    """Run full compliance audit"""
-    from compliance import compliance_engine
-    from evidence import evidence_collector
-    from report import report_generator
-    
-    agent_id = args.agent_id
-    regulation = args.regulation or "eu_ai_act"
-    
-    # Get agent info
-    agent = compliance_engine._agent_registry.get(agent_id)
-    if not agent:
-        print(f"\n❌ Agent not found: {agent_id}")
-        print(f"   Register first: wdc register {agent_id} --system <system>\n")
+    """Show audit log"""
+    log = ecosystem.get_audit_log(args.limit)
+    if not log:
+        print("\nNo audit events.\n")
         return
-    
-    risk_level = agent["risk_level"]
-    
     print(f"\n{'='*60}")
-    print(f"WDCG Compliance Audit")
+    print(f"Audit Log (last {len(log)} events)")
     print(f"{'='*60}")
-    print(f"Agent: {agent_id}")
-    print(f"Regulation: {regulation}")
-    print(f"Risk Level: {risk_level}")
+    for entry in log:
+        print(f"  {entry['timestamp']}  {entry['event']:<20} {entry.get('agent_id', '-')}")
     print()
-    
-    # Step 1: Compliance check
-    print("Step 1/3: Compliance Check...")
-    comp_result = compliance_engine.check_compliance(agent_id, "audit", {
-        "system_description": "WDCG Agent",
-        "intended_use": "AI Governance",
-        "risk_assessment": "Low risk",
-        "data_governance": "Compliant",
-        "human_oversight": "Enabled",
-    })
-    print(f"  Status: {comp_result['status']}")
-    
-    # Step 2: Evidence collection
-    print("Step 2/3: Evidence Collection...")
-    ev_result = evidence_collector.collect(agent_id, regulation, risk_level)
-    print(f"  Completeness: {ev_result['summary']['completeness_pct']}%")
-    print(f"  Missing: {ev_result['summary']['missing']}")
-    
-    # Step 3: Generate report
-    print("Step 3/3: Report Generation...")
-    report = report_generator.generate(agent_id, regulation, comp_result, ev_result)
-    print(f"  Score: {report.overall_score}/100")
-    print(f"  Status: {report.overall_status}")
-    
-    # Export
-    md = report_generator.export_markdown(report.report_id)
-    filename = f"audit_{agent_id}_{regulation}.md"
-    with open(filename, 'w') as f:
-        f.write(md)
-    
-    print(f"\n{'='*60}")
-    print(f"Audit complete: {filename}")
-    print(f"{'='*60}\n")
 
 
 def cmd_summary(args):
@@ -219,9 +175,8 @@ def main():
     call.add_argument("--approval", action="store_true", help="Require approval")
     
     # audit
-    audit = subparsers.add_parser("audit", help="Run compliance audit")
-    audit.add_argument("agent_id", help="Agent ID")
-    audit.add_argument("--regulation", help="Regulation (eu_ai_act, nist_ai_rmf, iso_42001)")
+    audit = subparsers.add_parser("audit", help="Show audit log")
+    audit.add_argument("--limit", type=int, default=100)
     
     # summary
     subparsers.add_parser("summary", help="Ecosystem summary")
