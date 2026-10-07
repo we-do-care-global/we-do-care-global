@@ -1,0 +1,185 @@
+{
+  "projects": [
+    {
+      "slug": "agentguard",
+      "num": "01",
+      "name": "AgentGuard",
+      "short": "Protect AI Agents",
+      "desc": "Security plane for autonomous AI: policy enforcement, emergency controls, bounded execution and tamper-evident auditability.",
+      "pillars": [
+        "Policy",
+        "Enforcement",
+        "Audit",
+        "Control"
+      ],
+      "icon": "\ud83d\udee1",
+      "demo": "https://we-do-care-global.github.io/agentguard/",
+      "github": "https://github.com/WeDoCareGlobal-CC/agentguard",
+      "dois": [
+        "10.5281/zenodo.23174494",
+        "10.5281/zenodo.23108383",
+        "10.5281/zenodo.22945778",
+        "10.5281/zenodo.22945777"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    },
+    {
+      "slug": "foundationcentar",
+      "num": "02",
+      "name": "FoundationCentar",
+      "short": "Governed Agent Orchestration",
+      "desc": "Turn one human-approved mission into bounded agent tasks, evidence checks, controlled execution and approval-gated delivery.",
+      "pillars": [
+        "Plan",
+        "Delegate",
+        "Verify",
+        "Approve"
+      ],
+      "icon": "\u25eb",
+      "demo": "https://foundationcentar-demo-rkwero.v2.appdeploy.ai/",
+      "github": "https://github.com/WeDoCareGlobal-CC/FoundationCentar",
+      "dois": [
+        "10.5281/zenodo.23174502",
+        "10.5281/zenodo.23073887"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    },
+    {
+      "slug": "enterprise-hybrid-rag",
+      "num": "03",
+      "name": "Enterprise Hybrid-RAG",
+      "short": "Retrieval & Proof",
+      "desc": "Trusted knowledge grounding with hybrid retrieval, ranking, evidence pipelines and tamper-evident retrieval proofs.",
+      "pillars": [
+        "Hybrid",
+        "Ranking",
+        "Evidence",
+        "Proof"
+      ],
+      "icon": "\u2315",
+      "demo": "https://we-do-care-global.github.io/enterprise-hybrid-rag/",
+      "github": "https://github.com/WeDoCareGlobal-CC/enterprise-hybrid-rag",
+      "dois": [
+        "10.5281/zenodo.23174497",
+        "10.5281/zenodo.22945802",
+        "10.5281/zenodo.22945801"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    },
+    {
+      "slug": "agent-eval",
+      "num": "04",
+      "name": "Agent Eval",
+      "short": "Evaluation & Observability",
+      "desc": "Measurement plane for agent reliability, latency, tool behavior, outcomes, verification and evidence-first reporting.",
+      "pillars": [
+        "Evaluation",
+        "Observability",
+        "Verification",
+        "Reporting"
+      ],
+      "icon": "\u25a5",
+      "demo": "https://we-do-care-global.github.io/agent-eval/",
+      "github": "https://github.com/WeDoCareGlobal-CC/agent-eval",
+      "dois": [
+        "10.5281/zenodo.23174495",
+        "10.5281/zenodo.23108384",
+        "10.5281/zenodo.22945804",
+        "10.5281/zenodo.22983602"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    },
+    {
+      "slug": "agentvault",
+      "num": "05",
+      "name": "AgentVault",
+      "short": "Tool & Permission Governance",
+      "desc": "Control plane for tool permissions, secrets management and governed AI-to-tool execution with verification at every call.",
+      "pillars": [
+        "Permissions",
+        "Secrets",
+        "Execution",
+        "Verification"
+      ],
+      "icon": "\ud83d\udd10",
+      "demo": "https://we-do-care-global.github.io/agentvault/",
+      "github": "https://github.com/WeDoCareGlobal-CC/agentvault",
+      "dois": [
+        "10.5281/zenodo.23174499",
+        "10.5281/zenodo.23174505",
+        "10.5281/zenodo.22983557",
+        "10.5281/zenodo.22983601"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    },
+    {
+      "slug": "pharma-intelligence-os",
+      "num": "06",
+      "name": "Pharma Intelligence OS",
+      "short": "Regulatory Intelligence",
+      "desc": "FDA/EMA intelligence for evidence curation, regulatory workflow analysis, compliance monitoring and safety-focused operations.",
+      "pillars": [
+        "FDA",
+        "EMA",
+        "Evidence",
+        "Compliance"
+      ],
+      "icon": "\u2695",
+      "demo": "https://we-do-care-global.github.io/pharma-intelligence-os/",
+      "github": "https://github.com/WeDoCareGlobal-CC/pharma-intelligence-os",
+      "dois": [
+        "10.5281/zenodo.23174501",
+        "10.5281/zenodo.23174507",
+        "10.5281/zenodo.23174508",
+        "10.5281/zenodo.22983387"
+      ],
+      "orcid": "https://orcid.org/0009-0009-8515-2727"
+    }
+  ],
+  "orcid": "https://orcid.org/0009-0009-8515-2727",
+  "github_org": "https://github.com/we-do-care-global",
+  "zenodo_synced_dois": {
+    "agentguard": [
+      "10.5281/zenodo.23174494",
+      "10.5281/zenodo.23108383",
+      "10.5281/zenodo.22945778",
+      "10.5281/zenodo.22945777"
+    ],
+    "agent-eval": [
+      "10.5281/zenodo.23174495",
+      "10.5281/zenodo.23108384",
+      "10.5281/zenodo.22945804",
+      "10.5281/zenodo.22983602"
+    ],
+    "agentvault": [
+      "10.5281/zenodo.23174499",
+      "10.5281/zenodo.23174505",
+      "10.5281/zenodo.22983557",
+      "10.5281/zenodo.22983601"
+    ],
+    "enterprise-hybrid-rag": [
+      "10.5281/zenodo.23174497",
+      "10.5281/zenodo.22945802",
+      "10.5281/zenodo.22945801"
+    ],
+    "pharma-intelligence-os": [
+      "10.5281/zenodo.23174501",
+      "10.5281/zenodo.23174507",
+      "10.5281/zenodo.23174508",
+      "10.5281/zenodo.22983387"
+    ],
+    "foundationcentar": [
+      "10.5281/zenodo.23174502",
+      "10.5281/zenodo.23073887"
+    ],
+    "we-do-care-global": [
+      "10.5281/zenodo.23217953",
+      "10.5281/zenodo.23217952",
+      "10.5281/zenodo.23174504",
+      "10.5281/zenodo.22983603"
+    ]
+  },
+  "portal_doi": "10.5281/zenodo.23174504",
+  "total_works": 36,
+  "data_source": "https://commons.datacite.org/orcid.org/0009-0009-8515-2727?published=2026"
+}
