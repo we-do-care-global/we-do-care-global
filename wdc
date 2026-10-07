@@ -15,6 +15,7 @@ import sys
 import json
 import argparse
 from datetime import datetime
+from dataclasses import asdict
 
 # Import ecosystem (when running from repo)
 try:
@@ -73,7 +74,6 @@ def cmd_status(args):
 
 def cmd_register(args):
     """Register a new agent"""
-    from dataclasses import asdict
     agent_id = args.agent_id
     name = args.name or agent_id
     system = args.system
