@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentEval — We Do Care Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #d9a95f;
+  --gold-light: #f0c988;
+  --gold-soft: rgba(217, 169, 95, 0.12);
+  --cyan: #00d4aa;
+  --bg: #07080c;
+  --bg-1: #0d0f15;
+  --bg-2: #12151f;
+  --bg-3: #181d2a;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f1f3f9;
+  --text-2: #a3acc2;
+  --text-3: #6e7891;
+  --r: 16px;
+  --shadow-lg: 0 24px 64px -16px rgba(0,0,0,0.85);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.nav-brand { font-size: 18px; font-weight: 800; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav-links a:hover { color: var(--gold); }
+.hero { padding: 80px 0 60px; text-align: center; }
+.hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero .tagline { font-size: 20px; color: var(--text-2); margin-bottom: 32px; }
+.hero .description { font-size: 16px; color: var(--text-3); max-width: 600px; margin: 0 auto 40px; }
+.btn { display: inline-block; padding: 14px 32px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.btn-primary { background: var(--gold); color: #0a0b10; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-secondary { background: transparent; color: var(--gold); border: 1px solid var(--gold); margin-left: 12px; }
+.btn-secondary:hover { background: var(--gold-soft); }
+.section { padding: 60px 0; }
+.section h2 { font-size: 32px; font-weight: 700; margin-bottom: 32px; text-align: center; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.feature-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; }
+.feature-icon { font-size: 32px; margin-bottom: 16px; }
+.feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--text-2); }
+.demo-section { background: var(--bg-1); border-radius: var(--r); padding: 40px; margin: 40px 0; }
+.demo-section h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+.demo-terminal { background: #0a0b10; border: 1px solid var(--line); border-radius: 12px; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 14px; overflow-x: auto; }
+.demo-terminal .prompt { color: var(--cyan); }
+.demo-terminal .output { color: var(--text-2); }
+.install-section { background: var(--bg-1); border-radius: var(--r); padding: 40px; margin: 40px 0; }
+.install-section h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+.install-cmd { background: #0a0b10; border: 1px solid var(--line); border-radius: 12px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan); margin-bottom: 12px; }
+.cta { text-align: center; padding: 60px 0; }
+.cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+.cta p { color: var(--text-2); margin-bottom: 32px; }
+footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--line); color: var(--text-3); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="https://wedocare-global.com/" class="nav-brand">We Do Care Global</a>
+    <div class="nav-links">
+      <a href="https://wedocare-global.com/">Portal</a>
+      <a href="https://github.com/we-do-care-global/agent-eval">GitHub</a>
+      <a href="https://orcid.org/0009-0009-8515-2727">ORCID</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>AgentEval</h1>
+    <p class="tagline">AI Agent Evaluation & Observability</p>
+    <p class="description">Measure agent performance, latency, token usage, success rate, and error classification in production.</p>
+    <a href="#demo" class="btn btn-primary">Try Live Demo</a>
+    <a href="https://github.com/we-do-care-global/agent-eval" class="btn btn-secondary">View on GitHub</a>
+  </section>
+
+  <section class="section">
+    <h2>Features</h2>
+    <div class="features-grid">
+      
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Performance Metrics</h3>
+          <p>Latency, throughput, and success rate tracking</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Error Classification</h3>
+          <p>Automatic categorization of agent failures</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Token Usage</h3>
+          <p>Per-action cost tracking and optimization</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Observability</h3>
+          <p>Real-time dashboards and alerting</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="section" id="demo">
+    <h2>Live Demo</h2>
+    <div class="demo-section">
+      <h3>Terminal Demo</h3>
+      <div class="demo-terminal">
+        <div><span class="prompt">$</span> pip install agent-eval</div>
+        <div class="output">✓ Installed successfully</div>
+        <br>
+        <div><span class="prompt">$</span> agent-eval benchmark --model all</div>
+        <div class="output">✓ Scan complete. 0 critical issues found.</div>
+        <div class="output">✓ Policy enforcement active.</div>
+        <div class="output">✓ Audit trail initialized.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Installation</h2>
+    <div class="install-section">
+      <h3>Quick Install</h3>
+      <div class="install-cmd">pip install agent-eval</div>
+      <h3>Usage</h3>
+      <div class="install-cmd">agent-eval benchmark --model all</div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Measure What Matters</h2>
+    <p>Open-source under Apache 2.0. Built with intention in Sarajevo, Bosnia and Herzegovina.</p>
+    <a href="https://github.com/we-do-care-global/agent-eval" class="btn btn-primary">Get Started</a>
+  </section>
+
+  <footer>
+    <p>We Do Care Global — Autonomous AI Governance from First Principles</p>
+    <p>ORCID: 0009-0009-8515-2727 | Apache 2.0 License</p>
+  </footer>
+</div>
+</body>
+</html>
