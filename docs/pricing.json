@@ -14,5 +14,47 @@
     "agentic_compliance": "$10K-$500K+/yr"
   },
   "recommendation": "Raise entry tier above the margin floor: floor $280/unit vs competitor $99. Convert to hybrid billing (base + usage). Cap annual discounts at +30% to stop leakage. Route inference per-request.",
-  "leakage_sample": []
+  "leakage_sample": [],
+  "compute_pass_through": {
+    "description": "Per-request pricing that passes AI inference costs directly to customers",
+    "margin_improvement": "50-60% \u2192 80-90% gross margin",
+    "model_costs_per_1k_tokens": {
+      "nvidia-nim-49b": {
+        "input": 0.02,
+        "output": 0.04
+      },
+      "nvidia-nim-30b": {
+        "input": 0.01,
+        "output": 0.02
+      },
+      "xai-grok": {
+        "input": 0.015,
+        "output": 0.03
+      },
+      "mistral-large": {
+        "input": 0.012,
+        "output": 0.025
+      }
+    },
+    "tiers": {
+      "starter": {
+        "base": 99,
+        "included_requests": 100,
+        "overage_rate": 0.5,
+        "margin_target": 0.85
+      },
+      "pro": {
+        "base": 299,
+        "included_requests": 1000,
+        "overage_rate": 0.3,
+        "margin_target": 0.88
+      },
+      "enterprise": {
+        "base": 999,
+        "included_requests": 10000,
+        "overage_rate": 0.15,
+        "margin_target": 0.9
+      }
+    }
+  }
 }
