@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In — We Do Care Global</title>
+<style>
+:root {
+  --gold: #d9a95f;
+  --gold-soft: rgba(217, 169, 95, 0.12);
+  --bg: #0a0b10;
+  --bg-elev: #11131a;
+  --text: #e8eaf0;
+  --text-muted: #8b92a5;
+  --border: rgba(255, 255, 255, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.signin { width: 100%; max-width: 420px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 32px; }
+.signin-header { text-align: center; margin-bottom: 28px; }
+.signin-header .logo { font-size: 28px; font-weight: 800; color: var(--gold); }
+.signin-header h1 { font-size: 22px; font-weight: 700; margin-top: 8px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
+.form-group input { width: 100%; padding: 12px 14px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; }
+.btn { display: block; width: 100%; padding: 14px; background: var(--gold); color: #0a0b10; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="signin">
+  <div class="signin-header">
+    <div class="logo">We Do Care<small>Global</small></div>
+    <h1>Sign In</h1>
+    <p>Access your autonomous AI governance dashboard</p>
+  </div>
+  <form id="signin-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+    </div>
+    <button class="btn" type="submit">Sign In</button>
+  </form>
+  <p style="text-align:center; margin-top: 16px; font-size:12px; color:var(--text-muted)">
+    <a href="mailto:emirperla96@gmail.com?subject=We%20Do%20Care%20Global%20Support">Need help? Contact support</a>
+  </p>
+</div>
+<script>
+document.getElementById('signin-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+  try {
+    const res = await fetch('/api/signin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
+    const data = await res.json();
+    if (res.ok) { localStorage.setItem('wdcg_session', data.token || 'signed-in'); window.location.href = data.redirect || '/#projects'; }
+    else { alert(data.error || 'Sign in failed.'); }
+  } catch (err) { alert('Network error. Please check your connection.'); }
+  finally { btn.disabled = false; btn.textContent = 'Sign In'; }
+});
+</script>
+</body>
+</html>
