@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache%202.0)
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue.svg)](https://python.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22983603.svg)](https://doi.org/10.5281/zenodo.22983603)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23217953.svg)](https://doi.org/10.5281/zenodo.23217953)
 [![Status](https://img.shields.io/badge/Published%20Projects-6%20Active-success.svg)](https://we-do-care-global.github.io/we-do-care-global/)
 
 > **Autonomous AI Governance from First Principles**  
@@ -57,7 +57,7 @@ Live Portal: **[we-do-care-global.github.io/we-do-care-global](https://we-do-car
 
 | Project | Version | Live URL | DOI |
 |---------|---------|----------|-----|
-| We Do Care Global (Portal) | v1.0.0 | https://wedocare-global.com/ | 10.5281/zenodo.22983603 |
+| We Do Care Global (Portal) | v1.0.0 | https://wedocare-global.com/ | 10.5281/zenodo.23217953 |
 | FoundationCentar | v1.0.0 | https://foundationcentar-demo-rkwero.v2.appdeploy.ai/ | 10.5281/zenodo.23073888 |
 | AgentEval | v0.1.1 | https://we-do-care-global.github.io/agent-eval/ | 10.5281/zenodo.22983602 |
 | AgentGuard | v0.1.0 | https://we-do-care-global.github.io/agentguard/ | 10.5281/zenodo.22983601 |
