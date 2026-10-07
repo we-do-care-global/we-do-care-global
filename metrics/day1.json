@@ -1,0 +1,21 @@
+{
+  "day": 1,
+  "date": "2026-10-07",
+  "metrics": {
+    "signups": 0,
+    "scans_actions": 0,
+    "arpc": 0,
+    "discount_rate": "0%",
+    "nrr": "0%"
+  },
+  "pricing": {
+    "margin_floor": 280,
+    "competitor_floor": 99,
+    "gap": 181
+  },
+  "market": {
+    "market_size_2025": 64.6,
+    "market_size_2034": 151.5,
+    "cagr": 13.2
+  }
+}
