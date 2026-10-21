@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b0c">
+<title>Enterprise Hybrid-RAG | We Do Care Global</title>
+<meta name="description" content="Hybrid lexical and dense retrieval fused through reciprocal rank fusion for enterprise knowledge.">
+<link rel="canonical" href="https://wedocare-global.com/enterprise-hybrid-rag.html">
+<link rel="icon" href="assets/logo-small.webp">
+<link rel="stylesheet" href="style.css">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="We Do Care Global">
+<meta property="og:title" content="Enterprise Hybrid-RAG | We Do Care Global">
+<meta property="og:description" content="Connect enterprise knowledge with hybrid lexical and dense retrieval, fused through RRF.">
+<meta property="og:url" content="https://wedocare-global.com/enterprise-hybrid-rag.html">
+<meta property="og:image" content="https://wedocare-global.com/assets/brand-poster.jpg">
+<meta property="og:image:alt" content="We Do Care Global infrastructure brand artwork">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell shell-wide masthead-inner">
+    <a class="brand" href="index.html#main" aria-label="We Do Care Global home">
+      <img src="assets/logo-small.webp" width="76" height="76" alt="We Do Care Global original logo">
+      <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+    </a>
+    <nav class="mast-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html#stack">The stack</a>
+      <a href="index.html#systems">Systems</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#evidence">Evidence</a>
+    </nav>
+    <div class="mast-actions">
+      <a class="btn btn-sm btn-primary" href="index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" hidden aria-controls="main-nav" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+
+    <section class="page-head">
+      <a class="breadcrumb" href="index.html#systems">← All systems</a>
+      <span class="label">Retrieval / Control surface 03</span>
+      <h1>Enterprise Hybrid-RAG</h1>
+      <p class="lede">Connect enterprise knowledge with hybrid lexical and dense retrieval, fused through reciprocal rank fusion.</p>
+      <div class="page-head-meta">
+        <span class="tag">BM25</span>
+        <span class="tag">Dense embeddings</span>
+        <span class="tag">RRF fusion</span>
+        <span class="tag">Next branch</span>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">01 / The fusion problem</span>
+          <h2 class="h2">Neither search<br>alone is enough.</h2>
+        </div>
+        <p>Lexical search finds the exact identifier. Dense search finds the paraphrase. Running only one of them guarantees a class of misses.</p>
+      </div>
+
+      <ol class="stages reveal">
+        <li class="stage">
+          <span class="sn">01</span>
+          <h3>BM25 lexical retrieval</h3>
+          <p>Ranks documents by term frequency against inverse document frequency. Precise on identifiers, error codes and named entities.</p>
+          <span class="stage-mark">Exact terms</span>
+        </li>
+        <li class="stage">
+          <span class="sn">02</span>
+          <h3>Dense semantic retrieval</h3>
+          <p>Ranks documents by embedding proximity. Finds the rephrased question that shares no keywords with the source document.</p>
+          <span class="stage-mark">Paraphrase</span>
+        </li>
+        <li class="stage">
+          <span class="sn">03</span>
+          <h3>Reciprocal rank fusion</h3>
+          <p>Merges the two ranked lists by position rather than by score, so neither retriever's scale dominates the result.</p>
+          <span class="stage-mark">Rank fusion</span>
+        </li>
+        <li class="stage">
+          <span class="sn">04</span>
+          <h3>Context assembly</h3>
+          <p>Chunks are assembled into context with source attribution, so a downstream reviewer can see where each claim came from.</p>
+          <span class="stage-mark">Attributed</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">02 / Local illustration</span>
+          <h2 class="h2">Search a small<br>sample corpus.</h2>
+        </div>
+        <p>This deterministic illustration matches words against five sample documents. It does not run BM25, embeddings, Qdrant or RRF and is not a retrieval benchmark.</p>
+      </div>
+
+      <div class="panel reveal">
+        <h3>Sample query</h3>
+        <div class="searchbar">
+          <input id="sample-query" type="search" placeholder="e.g. policy approval" aria-label="Sample search query">
+          <button class="btn btn-sm btn-primary" id="sample-search">Search sample documents</button>
+        </div>
+        <ul class="result-list" id="sample-results" aria-live="polite">
+          <li>Enter a word and run the search.</li>
+        </ul>
+        <p class="note">Illustration only. No index, vector store or embedding model is involved.</p>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">03 / Scope and verification</span>
+          <h2 class="h2">Retrieval quality<br>is yours.</h2>
+        </div>
+        <p>The pipeline is only half of it. The other half is your documents, your indexing and your evaluation set.</p>
+      </div>
+
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h3>No benchmark claimed</h3>
+          <p>Retrieval quality depends on your documents, indexing and evaluation. No performance or answer-accuracy benchmark is asserted here.</p>
+        </div>
+        <div class="panel">
+          <h3>Source and publication</h3>
+          <p>Source availability and publication records do not certify the current Next revision. Review release notes, tests and deployment assumptions for your environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">04 / Source and publication</span>
+          <h2 class="h2">Where to go<br>next.</h2>
+        </div>
+        <p>The current development branch, the running documentation, the published original and its permanent record.</p>
+      </div>
+
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="https://github.com/WeDoCareGlobal/enterprise-hybrid-rag-next" target="_blank" rel="noopener noreferrer">Next development source ↗</a>
+          <a class="btn btn-sm" href="https://wedocareglobal.github.io/enterprise-hybrid-rag-next/" target="_blank" rel="noopener noreferrer">Documentation &amp; quickstart ↗</a>
+          <a class="btn btn-sm" href="https://github.com/we-do-care-global/enterprise-hybrid-rag" target="_blank" rel="noopener noreferrer">Published original source ↗</a>
+          <a class="btn btn-sm" href="https://doi.org/10.5281/zenodo.22945802" target="_blank" rel="noopener noreferrer">Publication record ↗</a>
+        </div>
+        <p class="note">The DOI identifies a published record. Consult that record for its exact version and files; it does not automatically identify the latest Next commit.</p>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">05 / Discuss your use case</span>
+          <h2 class="h2">Start with your<br>questions.</h2>
+        </div>
+        <p>Bring the representative questions your users actually ask. Those are the only honest test of a retrieval configuration.</p>
+      </div>
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="index.html#contact">Prepare an inquiry ↗</a>
+          <a class="btn btn-sm" href="agent-eval.html">Agent Eval — measuring the answers ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html#main">
+          <img src="assets/logo-small.webp" width="76" height="76" alt="">
+          <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+        </a>
+        <p>Intelligence without blind spots. Open engineering for governed enterprise AI, with a humanitarian commitment attached.</p>
+      </div>
+      <div>
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="omniguard.html">OmniGuard</a></li>
+          <li><a href="agentguard.html">AgentGuard</a></li>
+          <li><a href="agentvault.html">AgentVault</a></li>
+          <li><a href="enterprise-hybrid-rag.html">Enterprise Hybrid-RAG</a></li>
+          <li><a href="agent-eval.html">Agent Eval</a></li>
+          <li><a href="foundationcentar.html">FoundationCentar</a></li>
+          <li><a href="pharma-intelligence-os.html">Pharma Intelligence OS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://github.com/WeDoCareGlobal" target="_blank" rel="noopener noreferrer">GitHub organization ↗</a></li>
+          <li><a href="evidence.html">Publication index</a></li>
+          <li><a href="https://orcid.org/0009-0009-8515-2727" target="_blank" rel="noopener noreferrer">ORCID ↗</a></li>
+          <li><a href="agentproof.html">AgentProof</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Site terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 We Do Care Global · Open engineering</span>
+      <span>Public source. Published research. Clear boundaries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js" defer></script>
+<script src="project-demos.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stripe System — Refined</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #533afd;
+      --brand-navy: #061b31;
+      --brand-ruby: #ea2261;
+      --brand-magenta: #f96bee;
+      --bg-color: #ffffff;
+      --text-color: #061b31;
+      --border-color: #e5edf5;
+      --radius: 4px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .max-w {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    h1 {
+      font-weight: 300;
+      font-size: 40px;
+      color: var(--brand-primary);
+      letter-spacing: -0.96px;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--brand-navy);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: #344054;
+    }
+
+    .primary-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--brand-primary), #2e2b8c);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      text-decoration: none;
+      margin: 1.5rem 0;
+      transition: transform 0.2s;
+    }
+
+    .primary-cta:hover { transform: translateY(-1px); }
+
+    .accent-box {
+      background: var(--brand-ruby);
+      color: white;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+    }
+
+    .shadow-panel {
+      background: var(--bg-color);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+    }
+
+    .shadow-panel::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: calc(var(--radius) + 1px);
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-navy));
+      z-index: -1;
+      opacity: 0.15;
+    }
+
+    .border-demo {
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: var(--radius);
+    }
+
+    code {
+      font-family: 'Source Code Pro', ui-monospace, monospace;
+      background: #f6f8fa;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      color: #24292e;
+    }
+
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      color: #656d7a;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="max-w">
+    <h1>Stripe Design System</h1>
+    <p>Refined color palette and cleaner visual hierarchy</p>
+
+    <a href="#" class="primary-cta">Get Started</a>
+
+    <div class="accent-box">
+      <strong>Ruby Accent</strong><br>
+      Warm red-pink for alerts and highlights
+    </div>
+
+    <div class="shadow-panel">
+      <h3>Elevated Surface</h3>
+      <p>Multi-layer shadow system with Stripe brand-colored blues</p>
+    </div>
+
+    <div class="border-demo">
+      <strong>Border Demo</strong><br>
+      1px solid #e5edf5 with 4px radius
+    </div>
+
+    <p>Typography uses Source Sans 3 at weight 300 for headlines with negative letter-spacing.</p>
+
+    <code>font-family: 'Source Sans 3', system-ui, sans-serif;</code>
+    <code>font-weight: 300;</code>
+    <code>letter-spacing: -0.96px;</code>
+
+    <p style="margin-top: 3rem;">The system uses conservative 4px border-radius throughout — no pill shapes, pure geometry.</p>
+  </div>
+
+  <footer class="footer">
+    <p>Generated from Hermes Agent popular-web-designs Stripe template — refined version</p>
+  </footer>
+</body>
+</html>
