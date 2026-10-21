@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b0c">
+<title>Agent Eval | We Do Care Global</title>
+<meta name="description" content="Evidence-driven metrics and execution assessment for agentic workflows.">
+<link rel="canonical" href="https://wedocare-global.com/agent-eval.html">
+<link rel="icon" href="assets/logo-small.webp">
+<link rel="stylesheet" href="style.css">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="We Do Care Global">
+<meta property="og:title" content="Agent Eval | We Do Care Global">
+<meta property="og:description" content="Make agentic workflows easier to inspect through evidence-driven metrics and execution assessment.">
+<meta property="og:url" content="https://wedocare-global.com/agent-eval.html">
+<meta property="og:image" content="https://wedocare-global.com/assets/brand-poster.jpg">
+<meta property="og:image:alt" content="We Do Care Global infrastructure brand artwork">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell shell-wide masthead-inner">
+    <a class="brand" href="index.html#main" aria-label="We Do Care Global home">
+      <img src="assets/logo-small.webp" width="76" height="76" alt="We Do Care Global original logo">
+      <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+    </a>
+    <nav class="mast-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html#stack">The stack</a>
+      <a href="index.html#systems">Systems</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#evidence">Evidence</a>
+    </nav>
+    <div class="mast-actions">
+      <a class="btn btn-sm btn-primary" href="index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" hidden aria-controls="main-nav" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+
+    <section class="page-head">
+      <a class="breadcrumb" href="index.html#systems">← All systems</a>
+      <span class="label">Evaluation / Control surface 04</span>
+      <h1>Agent Eval</h1>
+      <p class="lede">Make agentic workflows easier to inspect through evidence-driven metrics and execution assessment.</p>
+      <div class="page-head-meta">
+        <span class="tag">Task success</span>
+        <span class="tag">Tool-call accuracy</span>
+        <span class="tag">Policy compliance</span>
+        <span class="tag">Next branch</span>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">01 / Project focus</span>
+          <h2 class="h2">Measure the workflow,<br>not the model.</h2>
+        </div>
+        <p>A model answer can be correct by luck. Agent Eval measures what actually happened: which tools were called, whether they succeeded, and whether policy held.</p>
+      </div>
+
+      <div class="compare reveal">
+        <div><span class="cl">Task success</span><strong>Did it finish?</strong><p>Whether the workflow reached its declared end state, counted against a stated definition of done.</p></div>
+        <div><span class="cl">Tool accuracy</span><strong>Did it pick right?</strong><p>Whether the tool sequence matched the reference path, and how many calls were wasted.</p></div>
+        <div><span class="cl">Policy compliance</span><strong>Did it stay in bounds?</strong><p>Whether every call passed policy evaluation without an override or bypass.</p></div>
+        <div><span class="cl">Latency</span><strong>How long?</strong><p>Decision and end-to-end latency at a declared percentile, not an average.</p></div>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">02 / Illustrative values</span>
+          <h2 class="h2">What a threshold<br>looks like.</h2>
+        </div>
+        <p>These retained sample values explain the shape of an acceptance rule. They are not a current benchmark and not a report of tests run against the Next release.</p>
+      </div>
+
+      <div class="data-table reveal">
+        <table>
+          <caption>Illustrative values, not measured production performance</caption>
+          <thead>
+            <tr><th scope="col">Metric</th><th scope="col">Example</th><th scope="col">Acceptance rule</th><th scope="col">Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Task success</th><td>92.4%</td><td>≥ 90%</td><td class="verdict-ok">PASS</td></tr>
+            <tr><th scope="row">Tool-call accuracy</th><td>88.1%</td><td>≥ 85%</td><td class="verdict-ok">PASS</td></tr>
+            <tr><th scope="row">Policy compliance</th><td>100%</td><td>= 100%</td><td class="verdict-ok">PASS</td></tr>
+            <tr><th scope="row">Decision latency P95</th><td>18.2 ms</td><td>≤ 25 ms</td><td class="verdict-ok">PASS</td></tr>
+            <tr><th scope="row">Errors in allowed calls</th><td>11.8%</td><td>≤ 5%</td><td class="verdict-fail">FAIL</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note reveal">For a measured result, publish the code revision, dataset, successful-task definition, environment, sample count and raw output. A tool being allowed is not the same as successful task completion.</p>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">03 / Scope and verification</span>
+          <h2 class="h2">Where the line is.</h2>
+        </div>
+        <p>Evaluation tooling is a means, not a verdict. What counts as good performance has to be defined by you.</p>
+      </div>
+
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h3>Not a correctness claim</h3>
+          <p>Published evaluation tooling does not certify model correctness. Test coverage, datasets and acceptance thresholds need to fit your use case.</p>
+        </div>
+        <div class="panel">
+          <h3>Source and publication</h3>
+          <p>Source availability and publication records do not certify the current Next revision. Review release notes, tests and deployment assumptions for your environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">04 / Source and publication</span>
+          <h2 class="h2">Where to go<br>next.</h2>
+        </div>
+        <p>The current development branch, the running documentation, the published original and its permanent record.</p>
+      </div>
+
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="https://github.com/WeDoCareGlobal/agent-eval-next" target="_blank" rel="noopener noreferrer">Next development source ↗</a>
+          <a class="btn btn-sm" href="https://wedocareglobal.github.io/agent-eval-next/" target="_blank" rel="noopener noreferrer">Documentation &amp; quickstart ↗</a>
+          <a class="btn btn-sm" href="https://github.com/we-do-care-global/agent-eval" target="_blank" rel="noopener noreferrer">Published original source ↗</a>
+          <a class="btn btn-sm" href="https://doi.org/10.5281/zenodo.22945804" target="_blank" rel="noopener noreferrer">Publication record ↗</a>
+        </div>
+        <p class="note">The DOI identifies a published record. Consult that record for its exact version and files; it does not automatically identify the latest Next commit.</p>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">05 / Discuss your use case</span>
+          <h2 class="h2">Start with your<br>acceptance criteria.</h2>
+        </div>
+        <p>Describe the task, the definition of done and the threshold you would refuse to ship below. That is the whole conversation.</p>
+      </div>
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="index.html#contact">Prepare an inquiry ↗</a>
+          <a class="btn btn-sm" href="agentguard.html">AgentGuard — the policy side of the same trace ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html#main">
+          <img src="assets/logo-small.webp" width="76" height="76" alt="">
+          <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+        </a>
+        <p>Intelligence without blind spots. Open engineering for governed enterprise AI, with a humanitarian commitment attached.</p>
+      </div>
+      <div>
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="omniguard.html">OmniGuard</a></li>
+          <li><a href="agentguard.html">AgentGuard</a></li>
+          <li><a href="agentvault.html">AgentVault</a></li>
+          <li><a href="enterprise-hybrid-rag.html">Enterprise Hybrid-RAG</a></li>
+          <li><a href="agent-eval.html">Agent Eval</a></li>
+          <li><a href="foundationcentar.html">FoundationCentar</a></li>
+          <li><a href="pharma-intelligence-os.html">Pharma Intelligence OS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://github.com/WeDoCareGlobal" target="_blank" rel="noopener noreferrer">GitHub organization ↗</a></li>
+          <li><a href="evidence.html">Publication index</a></li>
+          <li><a href="https://orcid.org/0009-0009-8515-2727" target="_blank" rel="noopener noreferrer">ORCID ↗</a></li>
+          <li><a href="agentproof.html">AgentProof</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Site terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 We Do Care Global · Open engineering</span>
+      <span>Public source. Published research. Clear boundaries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js" defer></script>
+</body>
+</html>

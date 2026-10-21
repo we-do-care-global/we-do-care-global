@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stripe Design System — Inspired</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #533afd;
+      --navy-color: #061b31;
+      --white-color: #ffffff;
+      --ruby-color: #ea2261;
+      --magenta-color: #f96bee;
+      --border-color: #e5edf5;
+      --shadow-blue: rgba(50,50,93,0.25);
+      --shadow-dark-blue: rgba(3,3,39,0.25);
+      --shadow-black: rgba(0,0,0,0.1);
+      --shadow-ambient: rgba(23,23,23,0.08);
+      --shadow-soft: rgba(23,23,23,0.06);
+      
+      --heading-font-weight: 300;
+      --body-font: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --mono-font: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      
+      --heading-letter-spacing-56px: -1.4px;
+      --heading-letter-spacing-48px: -0.96px;
+      
+      --border-radius: 4px-8px;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--body-font);
+      color: var(--navy-color);
+      background-color: var(--white-color);
+      margin: 0;
+      padding: 0 2rem;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3 {
+      font-weight: var(--heading-font-weight);
+      letter-spacing: var(--heading-letter-spacing-56px);
+      color: var(--primary-color);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: 48px;
+      letter-spacing: var(--heading-letter-spacing-56px);
+    }
+    
+    h2 {
+      font-size: 32px;
+      letter-spacing: var(--heading-letter-spacing-48px);
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--navy-color);
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
+    
+    .primary-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--navy-color));
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      margin: 1rem 0;
+    }
+    
+    .accent-box {
+      background: var(--ruby-color);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin: 2rem 0;
+    }
+    
+    .shadow-demo {
+      background: var(--white-color);
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-ambient), var(--shadow-soft), var(--shadow-dark-blue), var(--shadow-black);
+    }
+    
+    .border-demo {
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: var(--border-radius);
+    }
+    
+    code {
+      font-family: var(--mono-font);
+      background: #f6f8fa;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      color: #24292e;
+    }
+    
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      color: #656d7a;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Stripe Design System Inspiration</h1>
+    
+    <p>This page demonstrates the key visual elements from the Stripe design system, adapted for the Hermes Agent popular-web-designs template.</p>
+    
+    <a href="#" class="primary-badge">Primary CTA — Stripe Purple</a>
+    
+    <div class="accent-box">
+      <strong>Ruby Accent</strong><br>
+      Secondary action color used for icons and alerts
+    </div>
+    
+    <div class="shadow-demo">
+      <h3>Shadow Layer Demonstration</h3>
+      <p>The signature Stripe shadow system using multi-layer blue-tinted shadows:</p>
+      <ul>
+        <li><code>rgba(50,50,93,0.25)</code> — primary shadow (brand-colored)</li>
+        <li><code>rgba(0,0,0,0.1)</code> — secondary layer</li>
+        <li><code>rgba(23,23,23,0.08)</code> — ambient</li>
+        <li><code>rgba(23,23,23,0.06)</code> — minimal soft lift</li>
+      </ul>
+    </div>
+    
+    <div class="border-demo">
+      <strong>Border Demo</strong><br>
+      Standard border using Stripe's default border color with conservative 4px-8px radius
+    </div>
+    
+    <p>Typography demonstrates the negative letter-spacing at display sizes and the Source Sans 3 font family at weight 300 for headlines.</p>
+    
+    <div class="border-demo">
+      <code>font-family: 'Source Sans 3', system-ui, sans-serif;</code><br>
+      <code>font-weight: 300;</code><br>
+      <code>letter-spacing: -1.4px (at 56px)</code>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <p>Generated from Hermes Agent popular-web-designs Stripe template</p>
+  </footer>
+</body>
+</html>

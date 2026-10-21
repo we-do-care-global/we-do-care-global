@@ -2,7 +2,9 @@
 
 <html data-palette="blue" lang="en">
 <head>
+<link rel="canonical" href="https://wedocare-global.com/"/>
 <meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-9ULPhlDV18ra8M09K0rxb4OSzGg6Q0QOhFaME/Feft4=' 'sha256-p5HXXd/yIfpeLrUEEzME+hzHvVTtjdjLqxqumI2zRLg='; style-src 'self' 'sha256-ufb3DW7j5wENqLGEfLFPidFrBowvWGUGswS5E1RRM84=' 'sha256-rTI3XaZX9BG4UlJtolK26Hu8pBZ2wN5Lks2DXMP1AX8=' 'sha256-p6bpCHa2WYuRIww57iFuY7pbT5sSr6XTmTp1DVV7/Jw=' 'sha256-9sOIYzKKBpb3vjMCZAK9niUC0uQ6SdG9ThHm67Derok='; img-src 'self' data: https://wedocare-global.com; font-src 'self' https://wedocare-global.com; media-src 'self' https://wedocare-global.com; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="#0a0b0c" name="theme-color"/>
 <title>We Do Care Global</title>
@@ -2347,7 +2349,13 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 :root{--bone:#edf3f7;--bone-2:#e2ebf2;--bone-line:#c7d6e2;--on-bone:#142431;--on-bone-muted:#485d6d;--text:#f0f5fa;--brass-dim:rgba(155,200,238,.14)}
 .reviewbar{background:#dfebf5;color:#233b50;border-bottom:1px solid #a8bfd2}.review-note{color:#435d72}.btn-primary:hover{background:var(--brass-2)!important}.label-bone{color:#245b80}.hero::before{background:radial-gradient(circle,rgba(155,200,238,.08),transparent 62%)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-</style></head>
+</style>
+<!-- Vercel Speed Insights -->
+<script type="module">
+  import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@1/dist/index.mjs';
+  injectSpeedInsights();
+</script>
+</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
@@ -2389,7 +2397,7 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 </div>
 <figure class="film">
 <div class="film-frame">
-<video aria-label="We Do Care Global animated infrastructure brand film" height="720" id="brand-video" loop="" muted="" playsinline="" poster="https://wedocare-global.com/assets/brand-poster.jpg" preload="metadata" width="960">
+<video aria-label="We Do Care Global animated infrastructure brand film" height="720" id="brand-video" loop="" muted="" playsinline="" poster="https://wedocare-global.com/assets/brand-poster.jpg" preload="none" width="960">
 <source src="assets/brand-motion.mp4" type="video/mp4"/>
 </video>
 <div class="film-vignette"></div>
@@ -2968,7 +2976,20 @@ if (video && motion) {
   video.addEventListener('error', unavailable);
   video.querySelector('source')?.addEventListener('error', unavailable);
   update();
-  if (!reduced.matches && !navigator.connection?.saveData) play();
+  if (!reduced.matches && !navigator.connection?.saveData) {
+    const startPlayback = () => {
+      if (!reduced.matches && !navigator.connection?.saveData) play();
+    };
+    const startWhenIdle = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(startPlayback, { timeout: 2000 });
+      } else {
+        window.setTimeout(startPlayback, 250);
+      }
+    };
+    if (document.readyState === 'complete') startWhenIdle();
+    else window.addEventListener('load', startWhenIdle, { once: true });
+  }
 }
 </script>
 </body>

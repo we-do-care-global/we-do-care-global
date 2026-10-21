@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b0c">
+<title>AgentGuard | We Do Care Global</title>
+<meta name="description" content="Policy evaluation, rate-limiting boundaries and hash-linked audit records for agent tool calls.">
+<link rel="canonical" href="https://wedocare-global.com/agentguard.html">
+<link rel="icon" href="assets/logo-small.webp">
+<link rel="stylesheet" href="style.css">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="We Do Care Global">
+<meta property="og:title" content="AgentGuard | We Do Care Global">
+<meta property="og:description" content="Make agent tool calls subject to explicit policies, limits and inspectable audit records.">
+<meta property="og:url" content="https://wedocare-global.com/agentguard.html">
+<meta property="og:image" content="https://wedocare-global.com/assets/brand-poster.jpg">
+<meta property="og:image:alt" content="We Do Care Global infrastructure brand artwork">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell shell-wide masthead-inner">
+    <a class="brand" href="index.html#main" aria-label="We Do Care Global home">
+      <img src="assets/logo-small.webp" width="76" height="76" alt="We Do Care Global original logo">
+      <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+    </a>
+    <nav class="mast-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html#stack">The stack</a>
+      <a href="index.html#systems">Systems</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#evidence">Evidence</a>
+    </nav>
+    <div class="mast-actions">
+      <a class="btn btn-sm btn-primary" href="index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" hidden aria-controls="main-nav" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+
+    <section class="page-head">
+      <a class="breadcrumb" href="index.html#systems">← All systems</a>
+      <span class="label">Security / Control surface 01</span>
+      <h1>AgentGuard</h1>
+      <p class="lede">Make agent tool calls subject to explicit policies, limits and inspectable audit records.</p>
+      <div class="page-head-meta">
+        <span class="tag tag-live"><i class="dot"></i>Reference service</span>
+        <span class="tag">Policy engine</span>
+        <span class="tag">Hash-linked audit</span>
+        <span class="tag">Next branch</span>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">01 / Project focus</span>
+          <h2 class="h2">Boundaries before<br>capability.</h2>
+        </div>
+        <p>AgentGuard decides whether a specific tool call is permitted, under which limits, and records the reasoning so the decision can be questioned later.</p>
+      </div>
+
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h3>Policy evaluation</h3>
+          <p>Each tool call is evaluated against a declared policy: role, tool, resource scope and rate limit. A call that matches no rule is denied rather than permitted by default.</p>
+        </div>
+        <div class="panel">
+          <h3>Rate-limiting boundaries</h3>
+          <p>Limits are enforced per caller and per tool. Exceeding a boundary produces a refusal with the limit that was hit, not a timeout or an empty result.</p>
+        </div>
+        <div class="panel">
+          <h3>Hash-linked audit</h3>
+          <p>Decisions are appended to an audit chain where each entry includes the hash of the previous one. A modified or removed entry breaks verification of everything after it.</p>
+        </div>
+        <div class="panel">
+          <h3>Human review</h3>
+          <p>Approval requirements are part of the policy, not a separate workflow. A rule can require an explicit human decision for a specific class of call.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">02 / Reference endpoint</span>
+          <h2 class="h2">Check the service<br>yourself.</h2>
+        </div>
+        <p>These buttons call a public reference deployment. If the service is unavailable, the panel says so — no result is simulated or substituted.</p>
+      </div>
+
+      <div class="panel reveal">
+        <h3>Live reference checks</h3>
+        <p>Read-only requests to the original AgentGuard demonstration service, separate from the Next implementation. Requests go to a public Cloudflare Workers endpoint.</p>
+        <div class="btn-row">
+          <button class="btn btn-sm" id="guard-health">Check service health</button>
+          <button class="btn btn-sm" id="guard-audit">Verify reference audit</button>
+        </div>
+        <pre class="result-box" id="guard-result" role="status">Not checked. No connection is made until you choose a check.</pre>
+        <p class="note">This checks the service response, not production security or integration with your agents.</p>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">03 / Scope and verification</span>
+          <h2 class="h2">What this does<br>not claim.</h2>
+        </div>
+        <p>Boundaries matter more than endorsements when you are deciding whether to run a system against your own tools.</p>
+      </div>
+
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h3>Rate limits and audit scope</h3>
+          <p>Rate limits and audit scope depend on the implementation and deployment. A demonstration endpoint does not establish production security.</p>
+        </div>
+        <div class="panel">
+          <h3>Source and publication</h3>
+          <p>Source availability and publication records do not certify the current Next revision. Review release notes, tests and deployment assumptions for your environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">04 / Source and publication</span>
+          <h2 class="h2">Where to go<br>next.</h2>
+        </div>
+        <p>Four routes: the current development branch, the running documentation, the published original and its permanent record.</p>
+      </div>
+
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="https://github.com/WeDoCareGlobal/agentguard-next" target="_blank" rel="noopener noreferrer">Next development source ↗</a>
+          <a class="btn btn-sm" href="https://wedocareglobal.github.io/agentguard-next/" target="_blank" rel="noopener noreferrer">Documentation &amp; quickstart ↗</a>
+          <a class="btn btn-sm" href="https://github.com/we-do-care-global/agentguard" target="_blank" rel="noopener noreferrer">Published original source ↗</a>
+          <a class="btn btn-sm" href="https://doi.org/10.5281/zenodo.22945778" target="_blank" rel="noopener noreferrer">Publication record ↗</a>
+        </div>
+        <p class="note">The DOI identifies a published record. Consult that record for its exact version and files; it does not automatically identify the latest Next commit.</p>
+      </div>
+    </section>
+
+    <section class="band band-tight">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">05 / Discuss your use case</span>
+          <h2 class="h2">Start with your<br>constraints.</h2>
+        </div>
+        <p>Bring your requirements, acceptance criteria and deployment constraints. The fastest way to know if this fits is to describe what you are trying to protect.</p>
+      </div>
+      <div class="panel reveal">
+        <div class="btn-row">
+          <a class="btn btn-sm btn-primary" href="index.html#contact">Prepare an inquiry ↗</a>
+          <a class="btn btn-sm" href="omniguard.html">OmniGuard — the gateway in front of this ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html#main">
+          <img src="assets/logo-small.webp" width="76" height="76" alt="">
+          <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+        </a>
+        <p>Intelligence without blind spots. Open engineering for governed enterprise AI, with a humanitarian commitment attached.</p>
+      </div>
+      <div>
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="omniguard.html">OmniGuard</a></li>
+          <li><a href="agentguard.html">AgentGuard</a></li>
+          <li><a href="agentvault.html">AgentVault</a></li>
+          <li><a href="enterprise-hybrid-rag.html">Enterprise Hybrid-RAG</a></li>
+          <li><a href="agent-eval.html">Agent Eval</a></li>
+          <li><a href="foundationcentar.html">FoundationCentar</a></li>
+          <li><a href="pharma-intelligence-os.html">Pharma Intelligence OS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://github.com/WeDoCareGlobal" target="_blank" rel="noopener noreferrer">GitHub organization ↗</a></li>
+          <li><a href="evidence.html">Publication index</a></li>
+          <li><a href="https://orcid.org/0009-0009-8515-2727" target="_blank" rel="noopener noreferrer">ORCID ↗</a></li>
+          <li><a href="agentproof.html">AgentProof</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Site terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 We Do Care Global · Open engineering</span>
+      <span>Public source. Published research. Clear boundaries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js" defer></script>
+<script src="project-demos.js" defer></script>
+</body>
+</html>
