@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b0c">
+<title>OmniGuard | We Do Care Global</title>
+<meta name="description" content="Layered request inspection, policy evaluation and governance headers for governed AI applications. Development preview.">
+<link rel="canonical" href="https://wedocare-global.com/omniguard.html">
+<link rel="icon" href="assets/logo-small.webp">
+<link rel="stylesheet" href="style.css">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="We Do Care Global">
+<meta property="og:title" content="OmniGuard | We Do Care Global">
+<meta property="og:description" content="Layered request inspection for governed AI applications.">
+<meta property="og:url" content="https://wedocare-global.com/omniguard.html">
+<meta property="og:image" content="https://wedocare-global.com/assets/brand-poster.jpg">
+<meta property="og:image:alt" content="We Do Care Global infrastructure brand artwork">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell shell-wide masthead-inner">
+    <a class="brand" href="index.html#main" aria-label="We Do Care Global home">
+      <img src="assets/logo-small.webp" width="76" height="76" alt="We Do Care Global original logo">
+      <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+    </a>
+    <nav class="mast-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html#stack">The stack</a>
+      <a href="index.html#systems">Systems</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#evidence">Evidence</a>
+    </nav>
+    <div class="mast-actions">
+      <a class="btn btn-sm btn-primary" href="index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" hidden aria-controls="main-nav" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+
+    <section class="page-head">
+      <a class="breadcrumb" href="index.html#systems">← All systems</a>
+      <span class="label">Inspection layer / Development preview</span>
+      <h1>OmniGuard</h1>
+      <p class="lede">Layered request inspection for governed AI applications. Screen every request, evaluate tool policy, score session risk, and return governance headers the calling system can act on.</p>
+      <div class="page-head-meta">
+        <span class="tag tag-warn"><i class="dot"></i>Development preview</span>
+        <span class="tag">Private source</span>
+        <span class="tag">Python SDK</span>
+        <span class="tag">6 integration adapters</span>
+      </div>
+    </section>
+
+    <!-- ============================================================ monitor -->
+    <section class="band band-tight" id="status">
+      <div class="status-strip reveal">
+        <div class="status-cell is-ok">
+          <span class="label">Gateway health</span>
+          <strong>Reachable</strong>
+          <small>GET /health</small>
+        </div>
+        <div class="status-cell is-warn">
+          <span class="label">Upstream model</span>
+          <strong>Not connected</strong>
+          <small>Returns a demonstration completion</small>
+        </div>
+        <div class="status-cell is-ok">
+          <span class="label">Audit chain</span>
+          <strong>HMAC chained</strong>
+          <small>Central audit, SQLite</small>
+        </div>
+        <div class="status-cell">
+          <span class="label">Decision mode</span>
+          <strong>ALLOW / BLOCK</strong>
+          <small>Explicit, never implicit</small>
+        </div>
+        <div class="status-cell">
+          <span class="label">Deployment</span>
+          <strong>Docker / uvicorn</strong>
+          <small>FastAPI gateway</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= stages -->
+    <section class="band band-tight" id="layers">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">01 / Inspection layers</span>
+          <h2 class="h2">What the gateway checks,<br>in order.</h2>
+        </div>
+        <p>Each layer is a separate detector with its own failure mode. A request must pass the sequence before it reaches a tool or a model.</p>
+      </div>
+
+      <ol class="stages reveal">
+        <li class="stage">
+          <span class="sn">01</span>
+          <h3>Injection detection</h3>
+          <p>Pattern-based detection of instruction override, role reassignment and exfiltration attempts across prompt and payload.</p>
+          <span class="stage-mark">Regex + heuristics</span>
+        </li>
+        <li class="stage">
+          <span class="sn">02</span>
+          <h3>Trust boundary</h3>
+          <p>Marks every input segment as trusted or untrusted, so downstream code never has to guess whether a string came from a user.</p>
+          <span class="stage-mark">Segment labelling</span>
+        </li>
+        <li class="stage">
+          <span class="sn">03</span>
+          <h3>Vault lookup</h3>
+          <p>Resolves which scoped credentials a request may touch. Unscoped or expired credentials are not returned.</p>
+          <span class="stage-mark">Scoped resolution</span>
+        </li>
+        <li class="stage">
+          <span class="sn">04</span>
+          <h3>Policy engine</h3>
+          <p>Evaluates declarative rules from configuration. Tool calls outside the allowlist are blocked or escalated, never silently permitted.</p>
+          <span class="stage-mark">YAML + defaults</span>
+        </li>
+        <li class="stage">
+          <span class="sn">05</span>
+          <h3>Session risk</h3>
+          <p>Tracks cumulative risk across a session rather than per request, so a slow escalation across many calls still trips the threshold.</p>
+          <span class="stage-mark">Cross-request state</span>
+        </li>
+        <li class="stage">
+          <span class="sn">06</span>
+          <h3>Governance headers</h3>
+          <p>Returns the decision, the reason and the trace identifiers as response headers the calling system can assert on.</p>
+          <span class="stage-mark">Machine-readable</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================================================== trace -->
+    <section class="band band-tight" id="trace">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">02 / Decision trace</span>
+          <h2 class="h2">The whole reasoning,<br>in one response.</h2>
+        </div>
+        <p>A governed system should be able to explain a single decision without asking a human to reconstruct it. This is the shape of that response.</p>
+      </div>
+
+      <div class="trace reveal">
+        <div class="trace-head"><span>POST /v1/guard</span><span>Illustrative payload</span></div>
+        <div class="trace-body">
+          <div class="trace-row"><b>request.tool</b><span>filesystem.read</span></div>
+          <div class="trace-row"><b>request.session</b><span>sess_9f2c41a7</span></div>
+          <div class="trace-row"><b>layer.injection_check</b><span class="ok">pass — 0 patterns matched</span></div>
+          <div class="trace-row"><b>layer.trust_boundary</b><span class="ok">pass — payload marked untrusted</span></div>
+          <div class="trace-row"><b>layer.vault_lookup</b><span class="ok">pass — scope read-only</span></div>
+          <div class="trace-row"><b>layer.policy_engine</b><span class="warn">review — filesystem.read not in tool allowlist</span></div>
+          <div class="trace-row"><b>layer.session_risk</b><span class="ok">pass — risk 0.11 of 1.00</span></div>
+          <div class="trace-row"><b>layer.governance</b><span>awaiting explicit human approval</span></div>
+          <div class="trace-row"><b>audit.chain</b><span>entry 0x8f31…c204 · prev 0x2ab7…9e11</span></div>
+        </div>
+        <div class="trace-verdict">
+          <span>Governance decision</span>
+          <b>BLOCK · PENDING APPROVAL</b>
+        </div>
+      </div>
+      <p class="note reveal">This trace is a structural illustration of the gateway's response shape. It is not a captured production request and no upstream model was called.</p>
+    </section>
+
+    <!-- ============================================================== scope -->
+    <section class="band band-tight" id="scope">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">03 / Engineering status</span>
+          <h2 class="h2">What is verified,<br>and what is not.</h2>
+        </div>
+        <p>Stated plainly so a security review starts from the real position rather than the marketing one.</p>
+      </div>
+
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h2>Verified in the development pipeline</h2>
+          <ul>
+            <li>Dashboard build completes</li>
+            <li>Docker startup reaches a healthy state</li>
+            <li>Gateway health endpoint responds</li>
+            <li>Security regression tests pass</li>
+            <li>Bounded benchmark dataset runs end to end</li>
+            <li>Live SDK contract tests cover authentication, rejected requests and gateway availability</li>
+          </ul>
+          <p class="note">Passing these checks is evidence of internal correctness. It is not a production security certification and no third party has audited it.</p>
+        </div>
+        <div class="panel">
+          <h2>Still required for production</h2>
+          <ul>
+            <li>Configured credentials and secret rotation procedure</li>
+            <li>Independent integration validation against target systems</li>
+            <li>Dependency review and vulnerability scanning</li>
+            <li>Operational hardening: rate limiting, failover, alerting</li>
+            <li>Threat model sign-off for the deployment context</li>
+          </ul>
+          <p class="note">Until these are addressed, treat OmniGuard as a development preview.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================== adapters -->
+    <section class="band band-tight" id="adapters">
+      <div class="band-head reveal">
+        <div>
+          <span class="label">04 / Integration adapters</span>
+          <h2 class="h2">One gateway in front<br>of the portfolio.</h2>
+        </div>
+        <p>The gateway ships with adapters for each system in this portfolio, so inspection is added once rather than per project.</p>
+      </div>
+
+      <div class="compare reveal">
+        <div><span class="cl">AgentGuard</span><strong>Policy</strong><p>Delegates tool-call policy evaluation to the existing policy engine.</p></div>
+        <div><span class="cl">Agent Eval</span><strong>Verdict</strong><p>Forwards inspection outcomes into evaluation traces and metrics.</p></div>
+        <div><span class="cl">Hybrid-RAG</span><strong>Context</strong><p>Validates retrieved context before it enters a prompt.</p></div>
+        <div><span class="cl">AgentVault</span><strong>Credentials</strong><p>Resolves scoped credentials through the vault rather than the gateway.</p></div>
+        <div><span class="cl">FoundationCentar</span><strong>Governance</strong><p>Supplies approval state for governed orchestration steps.</p></div>
+        <div><span class="cl">Pharma OS</span><strong>Human review</strong><p>Routes cases requiring qualified human verification.</p></div>
+      </div>
+    </section>
+
+    <!-- ============================================================= source -->
+    <section class="band band-tight" id="source">
+      <div class="panels panels-2 reveal">
+        <div class="panel">
+          <h2>Source and access</h2>
+          <p>Development is maintained in the WeDoCareGlobal organization. The repository is private; GitHub access is required. Public visitors can request a technical walkthrough.</p>
+          <div class="btn-row">
+            <a class="btn btn-sm" href="https://github.com/WeDoCareGlobal/OmniGuard-Next" target="_blank" rel="noopener noreferrer">Repository — authorized access ↗</a>
+            <a class="btn btn-sm" href="index.html#contact">Request a walkthrough ↗</a>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Place in the portfolio</h2>
+          <p>OmniGuard complements the six published systems and sits in front of them. Ecosystem-wide integration remains subject to project-specific tests; a passing adapter test is not a deployment.</p>
+          <div class="btn-row">
+            <a class="btn btn-sm" href="index.html#systems">All systems ↗</a>
+            <a class="btn btn-sm" href="evidence.html">Publication evidence ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html#main">
+          <img src="assets/logo-small.webp" width="76" height="76" alt="">
+          <span><span class="brand-text">WE DO CARE</span><span class="brand-sub">GLOBAL</span></span>
+        </a>
+        <p>Intelligence without blind spots. Open engineering for governed enterprise AI, with a humanitarian commitment attached.</p>
+      </div>
+      <div>
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="omniguard.html">OmniGuard</a></li>
+          <li><a href="agentguard.html">AgentGuard</a></li>
+          <li><a href="agentvault.html">AgentVault</a></li>
+          <li><a href="enterprise-hybrid-rag.html">Enterprise Hybrid-RAG</a></li>
+          <li><a href="agent-eval.html">Agent Eval</a></li>
+          <li><a href="foundationcentar.html">FoundationCentar</a></li>
+          <li><a href="pharma-intelligence-os.html">Pharma Intelligence OS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://github.com/WeDoCareGlobal" target="_blank" rel="noopener noreferrer">GitHub organization ↗</a></li>
+          <li><a href="evidence.html">Publication index</a></li>
+          <li><a href="https://orcid.org/0009-0009-8515-2727" target="_blank" rel="noopener noreferrer">ORCID ↗</a></li>
+          <li><a href="agentproof.html">AgentProof</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Site terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 We Do Care Global · Open engineering</span>
+      <span>Public source. Published research. Clear boundaries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js" defer></script>
+</body>
+</html>
