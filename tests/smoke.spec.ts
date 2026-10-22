@@ -63,7 +63,7 @@ test('brand video defers playback until after load and idle', async ({ page }) =
   await page.goto('/', { waitUntil: 'load' });
   const video = page.locator('#brand-video');
   await expect(video).toHaveAttribute('preload', 'none');
-  await expect(video).toHaveAttribute('poster', /brand-poster\\.jpg/);
+  await expect(video).toHaveAttribute('poster', /brand-poster\.jpg/);
   expect(await page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(0);
   await expect.poll(() => page.evaluate(() => (window as any).__idleCallbacks.length)).toBeGreaterThan(0);
   await page.evaluate(() => {
