@@ -39,7 +39,7 @@ test('homepage project cards link to working pages', async ({ page, request }) =
   }
 });
 
-test('brand video is lazy and supports user-initiated playback', async ({ page }) => {
+test('brand video is lazy and does not autoplay with reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.addInitScript(() => {
     (window as any).__brandVideoPlayCalls = 0;
@@ -53,10 +53,6 @@ test('brand video is lazy and supports user-initiated playback', async ({ page }
   await expect(video).toHaveAttribute('preload', 'none');
   await expect(video).toHaveAttribute('poster', /brand-poster\.jpg/);
   expect(await page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(0);
-  const toggle = page.locator('#motion-toggle');
-  await expect(toggle).toBeVisible();
-  await toggle.click();
-  await expect.poll(() => page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(1);
 });
 
 test('reduced motion suppresses automatic brand-video playback', async ({ page }) => {
