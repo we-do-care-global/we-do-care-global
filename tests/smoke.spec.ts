@@ -39,25 +39,13 @@ test('homepage project cards link to working pages', async ({ page, request }) =
   }
 });
 
-test('brand video defers playback until after load and idle', async ({ page }) => {
+test('brand video is lazy and supports user-initiated playback', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.addInitScript(() => {
     (window as any).__brandVideoPlayCalls = 0;
-    (window as any).__idleCallbacks = [];
-    Object.defineProperty(navigator, 'connection', { configurable: true, value: { saveData: false } });
-    const originalMatchMedia = window.matchMedia.bind(window);
-    window.matchMedia = (query: string) => {
-      if (query === '(prefers-reduced-motion: reduce)') {
-        return { ...originalMatchMedia(query), matches: false, addEventListener: () => {} } as MediaQueryList;
-      }
-      return originalMatchMedia(query);
-    };
     HTMLMediaElement.prototype.play = function () {
       (window as any).__brandVideoPlayCalls++;
       return Promise.resolve();
-    };
-    (window as any).requestIdleCallback = (callback: IdleRequestCallback) => {
-      (window as any).__idleCallbacks.push(callback);
-      return (window as any).__idleCallbacks.length;
     };
   });
   await page.goto('/', { waitUntil: 'load' });
@@ -65,12 +53,9 @@ test('brand video defers playback until after load and idle', async ({ page }) =
   await expect(video).toHaveAttribute('preload', 'none');
   await expect(video).toHaveAttribute('poster', /brand-poster\.jpg/);
   expect(await page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(0);
-  await expect.poll(() => page.evaluate(() => (window as any).__idleCallbacks.length)).toBeGreaterThan(0);
-  await page.evaluate(() => {
-    for (const callback of (window as any).__idleCallbacks.splice(0)) {
-      callback({ didTimeout: false, timeRemaining: () => 50 });
-    }
-  });
+  const toggle = page.locator('#motion-toggle');
+  await expect(toggle).toBeVisible();
+  await toggle.click();
   await expect.poll(() => page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(1);
 });
 
