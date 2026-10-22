@@ -29,29 +29,49 @@ test('homepage project cards link to working pages', async ({ page, request }) =
     const href = await link.getAttribute('href');
     expect(href).toBeTruthy();
     const url = new URL(href!, page.url());
-    expect(url.origin).toBe(new URL(page.url()).origin);
-    const response = await request.get(url.toString());
-    expect(response.status(), url.toString()).toBe(200);
+    const localOrigin = new URL(page.url()).origin;
+    // The published site uses some absolute first-party URLs; resolve them
+    // to our local fixture instead of contacting the live website.
+    expect([localOrigin, 'https://wedocare-global.com']).toContain(url.origin);
+    const localUrl = new URL(url.pathname + url.search, localOrigin);
+    const response = await request.get(localUrl.toString());
+    expect(response.status(), localUrl.toString()).toBe(200);
   }
 });
 
-test('brand video is not preloaded and starts after page load', async ({ page }) => {
+test('brand video defers playback until after load and idle', async ({ page }) => {
   await page.addInitScript(() => {
     (window as any).__brandVideoPlayCalls = 0;
+    (window as any).__idleCallbacks = [];
+    Object.defineProperty(navigator, 'connection', { configurable: true, value: { saveData: false } });
+    const originalMatchMedia = window.matchMedia.bind(window);
+    window.matchMedia = (query: string) => {
+      if (query === '(prefers-reduced-motion: reduce)') {
+        return { ...originalMatchMedia(query), matches: false, addEventListener: () => {} } as MediaQueryList;
+      }
+      return originalMatchMedia(query);
+    };
     HTMLMediaElement.prototype.play = function () {
       (window as any).__brandVideoPlayCalls++;
       return Promise.resolve();
     };
     (window as any).requestIdleCallback = (callback: IdleRequestCallback) => {
-      window.setTimeout(() => callback({ didTimeout: false, timeRemaining: () => 50 }), 50);
-      return 1;
+      (window as any).__idleCallbacks.push(callback);
+      return (window as any).__idleCallbacks.length;
     };
   });
   await page.goto('/', { waitUntil: 'load' });
   const video = page.locator('#brand-video');
   await expect(video).toHaveAttribute('preload', 'none');
-  await expect(video).toHaveAttribute('poster', /brand-poster\.jpg/);
-  await expect.poll(() => page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBeGreaterThan(0);
+  await expect(video).toHaveAttribute('poster', /brand-poster\\.jpg/);
+  expect(await page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(0);
+  await expect.poll(() => page.evaluate(() => (window as any).__idleCallbacks.length)).toBeGreaterThan(0);
+  await page.evaluate(() => {
+    for (const callback of (window as any).__idleCallbacks.splice(0)) {
+      callback({ didTimeout: false, timeRemaining: () => 50 });
+    }
+  });
+  await expect.poll(() => page.evaluate(() => (window as any).__brandVideoPlayCalls)).toBe(1);
 });
 
 test('reduced motion suppresses automatic brand-video playback', async ({ page }) => {
