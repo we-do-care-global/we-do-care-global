@@ -26,7 +26,8 @@ errors=[];checked=0
 for p,doc in files.items():
  if doc.duplicates:errors.append(f'{p}: duplicate IDs {doc.duplicates}')
  if doc.h1!=1:errors.append(f'{p}: expected one H1, got {doc.h1}')
- if not(doc.title and doc.canonical and doc.description and doc.csp):errors.append(f'{p}: missing metadata/security policy')
+ missing=[name for name,present in [('title',doc.title),('canonical URL',doc.canonical),('meta description',doc.description),('Content-Security-Policy',doc.csp)] if not present]
+ if missing:errors.append(f"{p}: missing metadata/security policy: {', '.join(missing)}")
  if doc.inline:errors.append(f'{p}: inline styles or event handlers blocked by CSP')
  for ref in doc.refs:
   u=urlsplit(ref)
