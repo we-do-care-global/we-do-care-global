@@ -1,0 +1,70 @@
+name: Sync organization website to production
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-organization-website
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Checkout approved organization website
+        uses: actions/checkout@v4
+        with:
+          repository: WeDoCareGlobal/WeDoCare-Global.Com-Next
+          ref: main
+          path: upstream
+          persist-credentials: false
+      - name: Sync static site without changing Pages ownership or CNAME
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f upstream/index.html
+          test -f docs/CNAME
+          test "$(cat docs/CNAME)" = 'wedocare-global.com'
+          rsync -a upstream/ docs/ \
+            --exclude='/.git/' \
+            --exclude='/.github/' \
+            --exclude='/docs/' \
+            --exclude='/scripts/' \
+            --exclude='/*.md' \
+            --exclude='/CNAME' \
+            --exclude='/node_modules/' \
+            --exclude='/package-lock.json'
+          # Keep current production assets that may not be present upstream.
+          # No --delete; review obsolete files separately.
+          python3 scripts/check_site.py docs
+          node --check docs/app.js
+          node --check docs/shared.js
+          node --check docs/project-demos.js
+          test "$(cat docs/CNAME)" = 'wedocare-global.com'
+          git -C upstream rev-parse HEAD > docs/.upstream-website-revision
+      - name: Open reviewable sync pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: docs/
+          branch: automation/sync-organization-website
+          delete-branch: true
+          title: 'chore(site): sync WeDoCareGlobal website to production'
+          commit-message: 'chore(site): sync approved organization website into Pages docs'
+          body: |
+            Automated sync from `WeDoCareGlobal/WeDoCare-Global.Com-Next@main`.
+            Static checks passed before this PR was opened.
+            Review the generated changes and merge to publish via the existing Pages workflow.
+            Production CNAME and existing assets are preserved; no DNS or hosting migration.
+          labels: |
+            website
