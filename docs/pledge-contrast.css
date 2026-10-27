@@ -1,0 +1,5 @@
+/* Pledge contrast on the light background; scoped to avoid changing dark sections. */
+#pledge .pledge-figure span,
+#pledge .pledge p { color: #454b51; }
+#pledge .pledge small { color: #555b60; }
+#pledge .pledge-figure strong { color: #3975a2; }

@@ -9,7 +9,7 @@
 <meta content="#0a0b0c" name="theme-color"/>
 <title>We Do Care Global</title>
 <meta content="Seven open engineering systems for governed enterprise AI: an inspection layer, control plane, retrieval, evaluation, secrets and regulatory intelligence." name="description"/>
-<link href="assets/logo-small.webp" rel="icon"/>
+<link href="logo-small.webp" rel="icon"/>
 <style>/* ==========================================================================
    We Do Care Global — design system v5
    Warm graphite + bone + brass. Serif display, sans UI, mono technical.
@@ -2337,7 +2337,7 @@ table {
 <meta content="We Do Care Global" property="og:title"/>
 <meta content="Seven open engineering systems for governed enterprise AI. Inspect before acting." property="og:description"/>
 <meta content="https://wedocare-global.com/" property="og:url"/>
-<meta content="https://wedocare-global.com/assets/brand-poster.jpg" property="og:image"/>
+<meta content="brand-poster.jpg" property="og:image"/>
 <meta content="We Do Care Global infrastructure brand artwork" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <style>
@@ -2355,13 +2355,15 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
   import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@1/dist/index.mjs';
   injectSpeedInsights();
 </script>
+<link rel="stylesheet" href="film-play.css"/>
+<link rel="stylesheet" href="pledge-contrast.css"/>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
 <div class="shell shell-wide masthead-inner">
 <a aria-label="We Do Care Global home" class="brand" href="#main">
-<img alt="We Do Care Global original logo" height="76" src="assets/logo-small.webp" width="76"/>
+<img alt="We Do Care Global original logo" height="76" src="logo-small.webp" width="76"/>
 <span><span class="brand-word word1">WE DO CARE</span><span class="brand-word word2">GLOBAL</span></span>
 </a>
 <nav aria-label="Main navigation" class="mast-nav" id="main-nav">
@@ -2397,10 +2399,11 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 </div>
 <figure class="film">
 <div class="film-frame">
-<video aria-label="We Do Care Global animated infrastructure brand film" height="720" id="brand-video" loop="" muted="" playsinline="" poster="https://wedocare-global.com/assets/brand-poster.jpg" preload="none" width="960">
-<source src="assets/brand-motion.mp4" type="video/mp4"/>
+<video aria-label="We Do Care Global animated infrastructure brand film" height="720" id="brand-video" autoplay="" loop="" muted="" playsinline="" poster="brand-poster.jpg" preload="auto" width="960">
+<source src="brand-motion.mp4" type="video/mp4"/>
 </video>
 <div class="film-vignette"></div>
+<button class="film-play-overlay" id="film-play-overlay" type="button" aria-label="Play brand video">▶ <span>Play video</span></button>
 <div class="film-tag"><span>We Do Care Global</span><span>Engineering in motion / 01</span></div>
 </div>
 <figcaption class="film-bar">
@@ -2640,6 +2643,7 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 </div>
 </section>
 <!-- ============================================================= evidence -->
+<span id="proof" aria-hidden="true"></span>
 <section class="band" id="evidence">
 <div class="shell">
 <div class="band-head reveal">
@@ -2696,6 +2700,7 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 <span class="label">05 / Start a conversation</span>
 <h2 class="h2">What are you<br/>building <em class="serif-em">toward?</em></h2>
 <p class="lede">Bring a concrete challenge. We'll find the right starting point for your AI infrastructure — and say plainly if the answer is that you don't need all seven systems.</p>
+<p><a class="btn btn-primary" href="ai-security-assessment.html">Request an AI Security Assessment <span aria-hidden="true">↗</span></a></p>
 <a class="contact-email" href="mailto:emir@wedocare-global.com">emir@wedocare-global.com ↗</a>
 <p class="note">Sarajevo, Bosnia and Herzegovina · Open to global collaboration</p>
 </div>
@@ -2757,7 +2762,7 @@ html[data-palette=blue]{--brass:#9bc8ee;--brass-2:#c9e4f9;--brass-dim:rgba(155,2
 <div class="foot-grid">
 <div>
 <a class="brand" href="#main">
-<img alt="" height="76" src="assets/logo-small.webp" width="76"/>
+<img alt="" height="76" src="logo-small.webp" width="76"/>
 <span><span class="brand-word word1">WE DO CARE</span><span class="brand-word word2">GLOBAL</span></span>
 </a>
 <p>Intelligence without blind spots. Open engineering for governed enterprise AI, with a humanitarian commitment attached.</p>
@@ -2992,5 +2997,6 @@ if (video && motion) {
   }
 }
 </script>
+<script src="film-play.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+{
+  "publication_allowed": false,
+  "transport": "manual GitHub handoff",
+  "tasks": [
+    {
+      "id": "WDC-WEB-001",
+      "title": "Save accepted static preview and project registry",
+      "owner": "ChatGPT",
+      "state": "completed"
+    },
+    {
+      "id": "WDC-WEB-002",
+      "title": "Desktop/mobile browser QA of candidate-v3 and evidence",
+      "owner": null,
+      "suggested_owner": "Hermes",
+      "state": "ready",
+      "depends_on": [
+        "WDC-WEB-004"
+      ]
+    },
+    {
+      "id": "WDC-WEB-003",
+      "title": "Reconcile unpublished local Next.js work",
+      "owner": null,
+      "suggested_owner": "Hermes",
+      "state": "proposed",
+      "depends_on": [
+        "WDC-WEB-002"
+      ]
+    },
+    {
+      "id": "WDC-WEB-004",
+      "title": "Static product pages, metadata, contact integration and CSS cleanup",
+      "owner": "ChatGPT",
+      "state": "implemented_checks_passed",
+      "browser_qa": "pending",
+      "mail_delivery": "not_tested",
+      "publication_allowed": false
+    }
+  ]
+}

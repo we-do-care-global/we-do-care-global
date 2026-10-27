@@ -1,0 +1,55 @@
+{
+  "owner": "WeDoCareGlobal",
+  "verified_at": "2026-10-15T22:02:28Z",
+  "connection_type": "repository references only; no runtime service integration",
+  "projects": [
+    {
+      "repository": "WeDoCareGlobal/agentguard-next",
+      "source_url": "https://github.com/WeDoCareGlobal/agentguard-next",
+      "demo_url": "https://wedocareglobal.github.io/agentguard-next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    },
+    {
+      "repository": "WeDoCareGlobal/FoundationCentar-Next",
+      "source_url": "https://github.com/WeDoCareGlobal/FoundationCentar-Next",
+      "demo_url": "https://wedocareglobal.github.io/FoundationCentar-Next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    },
+    {
+      "repository": "WeDoCareGlobal/enterprise-hybrid-rag-next",
+      "source_url": "https://github.com/WeDoCareGlobal/enterprise-hybrid-rag-next",
+      "demo_url": "https://wedocareglobal.github.io/enterprise-hybrid-rag-next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    },
+    {
+      "repository": "WeDoCareGlobal/agent-eval-next",
+      "source_url": "https://github.com/WeDoCareGlobal/agent-eval-next",
+      "demo_url": "https://wedocareglobal.github.io/agent-eval-next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    },
+    {
+      "repository": "WeDoCareGlobal/AgentVault-Next",
+      "source_url": "https://github.com/WeDoCareGlobal/AgentVault-Next",
+      "demo_url": "https://wedocareglobal.github.io/AgentVault-Next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    },
+    {
+      "repository": "WeDoCareGlobal/Pharma-Intelligence-Os-Next",
+      "source_url": "https://github.com/WeDoCareGlobal/Pharma-Intelligence-Os-Next",
+      "demo_url": "https://wedocareglobal.github.io/Pharma-Intelligence-Os-Next/",
+      "default_branch": "main",
+      "repository_verified": true,
+      "demo_availability_verified": false
+    }
+  ]
+}

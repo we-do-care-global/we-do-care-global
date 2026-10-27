@@ -1,0 +1,5 @@
+/* Accessible video control independent of autoplay. */
+.film-frame{position:relative}
+.film-play-overlay{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.75rem;padding:.9rem 1.25rem;border:1px solid rgba(232,228,219,.75);border-radius:999px;background:rgba(10,11,12,.85);color:#e8e4db;font:600 1rem/1.2 Manrope,system-ui,sans-serif;cursor:pointer;box-shadow:0 4px 22px rgba(0,0,0,.35)}
+.film-play-overlay:hover,.film-play-overlay:focus-visible{background:#292723;outline:2px solid #c4a878;outline-offset:3px}
+.film-play-overlay[hidden]{display:none!important}

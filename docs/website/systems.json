@@ -1,0 +1,98 @@
+[
+  {
+    "name": "AgentGuard",
+    "category": "Security",
+    "group": "control",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M16 3 27 7v9c0 7-11 13-11 13S5 23 5 16V7Z\"/><path d=\"m10 16 4 4 8-9\"/></svg>",
+    "repo": "agentguard-next",
+    "doi": "22945778",
+    "desc": "Make agent tool calls subject to explicit policies, limits and inspectable audit records.",
+    "focus": [
+      "Policy evaluation for agent tool calls",
+      "Rate-limiting boundaries",
+      "Hash-linked audit records"
+    ],
+    "note": "Rate limits and audit scope depend on the implementation and deployment. A demonstration endpoint does not establish production security.",
+    "use": "Start with the boundaries around what your agents can do. Review policies and audit behavior before connecting privileged tools."
+  },
+  {
+    "name": "FoundationCentar",
+    "category": "Governance",
+    "group": "control",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"m3 10 13-7 13 7M5 12h22M7 13v12m9-12v12m9-12v12M3 29h26M5 25h22\"/></svg>",
+    "repo": "FoundationCentar-Next",
+    "doi": "23073888",
+    "desc": "Explore governance-first foundations for operational AI deployment and accountability.",
+    "focus": [
+      "Governance-oriented orchestration",
+      "Operational control-plane concepts",
+      "Explicit accountability and oversight"
+    ],
+    "note": "Deployment architecture and integrations require project-level validation. This preview does not connect to an orchestrator.",
+    "use": "Use governance as the starting point for coordinating agents, defining ownership and planning human review."
+  },
+  {
+    "name": "Enterprise Hybrid-RAG",
+    "category": "Retrieval",
+    "group": "knowledge",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><ellipse cx=\"16\" cy=\"7\" rx=\"11\" ry=\"4\"/><path d=\"M5 7v18c0 6 22 6 22 0V7M5 16c0 6 22 6 22 0\"/></svg>",
+    "repo": "enterprise-hybrid-rag-next",
+    "doi": "22945802",
+    "desc": "Connect enterprise knowledge with hybrid lexical and dense retrieval, fused through RRF.",
+    "focus": [
+      "BM25 lexical retrieval",
+      "Dense semantic retrieval",
+      "Reciprocal Rank Fusion"
+    ],
+    "note": "Retrieval quality depends on your documents, indexing and evaluation. No performance or answer-accuracy benchmark is asserted here.",
+    "use": "Start with your knowledge sources. Compare lexical and semantic retrieval against representative questions before choosing your configuration."
+  },
+  {
+    "name": "Agent Eval",
+    "category": "Evaluation",
+    "group": "quality",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M4 4v24h25M9 21v-7m7 7V8m7 13v-11\"/><circle cx=\"24\" cy=\"6\" r=\"3\"/></svg>",
+    "repo": "agent-eval-next",
+    "doi": "22945804",
+    "desc": "Make agentic workflows easier to inspect through evidence-driven metrics and execution assessment.",
+    "focus": [
+      "Agent workflow assessment",
+      "Evaluation metrics",
+      "Traceable execution evidence"
+    ],
+    "note": "Published evaluation tooling does not certify model correctness. Test coverage, datasets and acceptance thresholds need to fit your use case.",
+    "use": "Define what good performance means, assemble representative tasks and inspect failures before increasing agent autonomy."
+  },
+  {
+    "name": "AgentVault",
+    "category": "Assurance",
+    "group": "quality",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><rect x=\"5\" y=\"12\" width=\"22\" height=\"17\" rx=\"2\"/><path d=\"M10 12V8a6 6 0 0 1 12 0v4M16 19v5\"/><circle cx=\"16\" cy=\"19\" r=\"1\"/></svg>",
+    "repo": "AgentVault-Next",
+    "doi": "22983557",
+    "desc": "Bring tool registration, secret management and bounded execution into a clearer control layer.",
+    "focus": [
+      "Tool registry",
+      "Secret management",
+      "Bounded execution and audit trails"
+    ],
+    "note": "Secret handling and access isolation must be reviewed in the target environment. This website stores no secrets and runs no agent tools.",
+    "use": "Review how tools are registered, credentials are handled and execution boundaries are enforced across your agent environment."
+  },
+  {
+    "name": "Pharma Intelligence OS",
+    "category": "Regulatory intelligence",
+    "group": "knowledge",
+    "icon": "<svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M12 3h8v9h9v8h-9v9h-8v-9H3v-8h9Z\"/></svg>",
+    "repo": "Pharma-Intelligence-Os-Next",
+    "doi": "22983388",
+    "desc": "Explore a dedicated workspace for pharmacovigilance and regulatory intelligence workflows.",
+    "focus": [
+      "Case-review workflow concepts",
+      "Regulatory information organization",
+      "Human verification of domain outputs"
+    ],
+    "note": "Software demonstration only. Not medical advice, a validated regulatory submission system or an autonomous clinical decision tool. Human verification is required.",
+    "use": "Explore how case review and regulatory evidence can be organized, while keeping qualified human review central to every consequential decision."
+  }
+]
