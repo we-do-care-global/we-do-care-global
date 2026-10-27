@@ -1,6 +1,10 @@
 name: Sync organization website to production
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-organization-website.yml
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
