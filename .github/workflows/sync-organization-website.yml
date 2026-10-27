@@ -66,5 +66,3 @@ jobs:
             Static checks passed before this PR was opened.
             Review the generated changes and merge to publish via the existing Pages workflow.
             Production CNAME and existing assets are preserved; no DNS or hosting migration.
-          labels: |
-            website
