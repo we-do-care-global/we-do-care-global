@@ -1,12 +1,9 @@
-# Copy to each repo as .github/dependabot.yml
+# Dependency updates for the static website repository.
+# Python tooling is not declared by a requirements.txt, pyproject.toml,
+# setup.py, Pipfile, or other supported Python dependency manifest.
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
-    schedule: { interval: "weekly", day: "monday", time: "06:00", timezone: "Europe/Sarajevo" }
-    open-pull-requests-limit: 5
-    labels: ["dependencies", "security"]
-  - package-ecosystem: "pip"
     directory: "/"
     schedule: { interval: "weekly", day: "monday", time: "06:00", timezone: "Europe/Sarajevo" }
     open-pull-requests-limit: 5
