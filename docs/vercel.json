@@ -1,0 +1,46 @@
+{
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://wedocare-global.com; font-src 'self' https://wedocare-global.com; media-src 'self' https://wedocare-global.com; connect-src 'self' https://wdcg-agentguard-api.emirperla96.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/shop/:path*",
+      "destination": "/:path"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/shop",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/shop/:path*",
+      "destination": "/:path",
+      "permanent": true
+    }
+  ],
+  "outputDirectory": "docs",
+  "buildCommand": "echo \"Static site - no build needed\""
+}
